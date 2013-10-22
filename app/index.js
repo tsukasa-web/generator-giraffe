@@ -25,47 +25,47 @@ GiraffeGenerator.prototype.askFor = function askFor() {
 	var prompts = [
 		{
 			name: 'user_name',
-			message: 'What is your name ?',
+			message: 'What is your name ? default(user_name)',
 			default: 'user_name'
 		},
 		{
 			name: 'localhost',
-			message: 'Input project localhost name',
+			message: 'Input project/localhost name default(localhost)',
 			default: 'localhost'
 		},
 		{
 			name: 'rootDirectory',
-			message: 'Input rootDirectory name',
+			message: 'Input rootDirectory name default(docs)',
 			default: 'docs'
 		},
 		{
 			type: 'confirm',
 			name: 'OS',
-			message: 'Which OS do you use ?(Mac or Win) Yes-->Mac No-->Win',
+			message: 'Which OS do you use ?(Mac or Win) Yes-->Mac No-->Win default(Yes)',
 			default: 'Y/n'
 		},
 		{
-			name: 'jqueryversion',
+			name: 'jqueryversion default(latest)',
 			message: 'jQuery version?'
 		},
 		{
 			name: 'common',
-			message: 'What is common resource directory name?',
+			message: 'What is common resource directory name? default(common)',
 			default: 'common'
 		},
 		{
 			name: 'compile',
-			message: 'What is compile files directory name?',
+			message: 'What is compile files directory name? default(compile)',
 			default: 'compile'
 		},
 		{
 			name: '_dev',
-			message: 'What is development tool resource directory name?',
+			message: 'What is development tool resource directory name? default(_dev)',
 			default: '_dev'
 		},
 		{
 			name: '_documents',
-			message: 'What is documents directory name?',
+			message: 'What is documents directory name? default(_documents)',
 			default: '_documents'
 		}
 	];
