@@ -35,9 +35,10 @@ A generator for [Yeoman](http://yeoman.io).
 - [Yeoman](http://yeoman.io/)
 - [Grunt](http://gruntjs.com/)
 - [Bower](http://bower.io/)
+- [livereloadx](http://nitoyon.github.io/livereloadx/)
 
 ```
-$ npm install -g yo grunt-cli bower
+$ npm install -g yo grunt-cli bower livereloadx
 ```
 
 MacOSの場合はさらにgrunt-webfontを使用するために
