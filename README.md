@@ -67,7 +67,7 @@ generator-giraffeをインストールします。
 
 	mkdir hogehoge
 	cd hogehoge
-	yo giraffe && grunt init
+	yo giraffe && grunt start
 	
 yeomanからの質問形式で以下の設定を行います。
 
