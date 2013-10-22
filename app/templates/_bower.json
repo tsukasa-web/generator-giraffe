@@ -1,0 +1,8 @@
+{
+	"name": "<%= user_name %>",
+	"dependencies": {
+		"jquery": "<%= jqueryversion ? '~' + jqueryversion : 'latest' %>",
+		"modernizr": "latest",
+		"normalize-css": "latest"
+	}
+}
