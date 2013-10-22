@@ -82,7 +82,7 @@ yeomanからの質問形式で以下の設定を行います。
 - ドキュメントディレクトリ名
 
 質問に返答後、返答内容に応じたディレクトリが構成され、  
-node-module等が自動的にインストールされます。
+node_module等が自動的にインストールされます。
 
 ####js,cssファイルの結合
 
@@ -113,7 +113,7 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
 
 #### ファイル監視の起動
 
-grunt_watch.batまたはgrunt_watch.commandを叩いてください。  
+cmd_batまたはcmd_commandフォルダの中にあるgrunt_watch.batまたはgrunt_watch.commandを叩いてください。  
 Grunt.jsで設定したlocalhost名でページが開き、ファイルの監視が始まります。
 Sublime Text2でlivereloadのプラグインを入れてる人は、バッティングするのでプラグインをremoveしてから使ってください。  
 この後、コンソールは出したままにしておいてください。最小化しても大丈夫です。  
@@ -138,7 +138,7 @@ https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkigh
 
 #### 仕上げの時に画像圧縮を行う
 
-batフォルダの中にあるgrunt_imagemin.batまたはgrunt_imagemin.commandを叩くと画像圧縮が始まります。  
+cmd_batまたはcmd_commandフォルダの中にあるgrunt_imagemin.batまたはgrunt_imagemin.commandを叩くと画像圧縮が始まります。  
 現状第3階層までのフォルダの中の画像を圧縮しますが、さらに階層を掘り下げたい時は
 
     imagemin: {
@@ -160,7 +160,7 @@ optimizationLevelを変更することで圧縮レベルを変更できます。
 
 #### webfontの作成（Macのみ）
 
-batフォルダの中にあるgrunt_webfontを叩くとwebfontの作成が始まります。初期設定では/common/fonts/iconsフォルダにaiファイルを格納してください。
+cmd_batまたはcmd_commandフォルダの中にあるgrunt_webfontを叩くとwebfontの作成が始まります。初期設定では/common/fonts/iconsフォルダにaiファイルを格納してください。
 
     webfont: {
     			icons: {
