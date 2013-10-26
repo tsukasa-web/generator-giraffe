@@ -128,9 +128,9 @@ module.exports = function(grunt) {
 			// 対象ファイルを指定
 			all: [
 				'<%%= path.root %>/<%%= path.src %>/js/*.js',
-				'!<%%= path.root %>/<%%= path.assets %>/js/*.min.js',
-				'!<%%= path.root %>/<%%= path.assets %>/js/*-all.js',
-				'!<%%= path.root %>/<%%= path.assets %>/js/lib/*.js'
+				'!<%%= path.root %>/<%%= path.src %>/js/*.min.js',
+				'!<%%= path.root %>/<%%= path.src %>/js/*-all.js',
+				'!<%%= path.root %>/<%%= path.src %>/js/lib/*.js'
 			]
 		},
 		//-----------------------------------------------------------------------
