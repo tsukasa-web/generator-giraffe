@@ -23,6 +23,7 @@ A generator for [Yeoman](http://yeoman.io).
 * jQueryの取得（バージョン指定可）
 * 最新normalize.cssの取得
 * 最新modernizr.jsの取得
+* 最新font-awesomeの取得
 * 画像圧縮
 * config.rb連動によるスプライト画像のランダム文字列消去
 * grunt-kssによるスタイルガイド生成
