@@ -82,8 +82,7 @@ module.exports = function(grunt) {
 			style: {
 				src: [
 					'<%%= path.root %>/<%%= path.src %>/css/normalize.css',
-					'<%%= path.root %>/<%%= path.src %>/css/hogehoge.css',
-					'<%%= path.root %>/<%%= path.src %>/css/hogehoge2.css'
+					'<%%= path.root %>/<%%= path.src %>/css/hogehoge.css'
 				],
 				dest: '<%%= path.root %>/<%%= path.src %>/css/dest/style-all.css'
 			},
@@ -91,8 +90,7 @@ module.exports = function(grunt) {
 				src: [
 					'<%%= path.root %>/<%%= path.src %>/js/lib/modernizr.js',
 					'<%%= path.root %>/<%%= path.src %>/js/lib/jquery.min.js',
-					'<%%= path.root %>/<%%= path.src %>/js/hogehoge.js',
-					'<%%= path.root %>/<%%= path.src %>/js/hogehoge2.js'
+					'<%%= path.root %>/<%%= path.src %>/js/hogehoge.js'
 				],
 				dest: '<%%= path.root %>/<%%= path.src %>/js/dest/run-all.js'
 			}

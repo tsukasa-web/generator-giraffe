@@ -98,18 +98,16 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
     concat: {
     	style: {
     		src: [
-    			'<%= path.root %>/<%= path.src %>/css/hogehoge.css',
-    			'<%= path.root %>/<%= path.src %>/css/hogehoge2.css',
-    			'<%= path.root %>/<%= path.src %>/css/hogehoge3.css'
+    			'<%= path.root %>/<%= path.src %>/css/normalize.css',
+    			'<%= path.root %>/<%= path.src %>/css/hogehoge.css'
     		],
     		dest: '<%= path.root %>/<%= path.src %>/css/dest/style-all.css'
     	},
     	run: {
     		src: [
-    			'<%= path.root %>/<%= path.src %>/js/hogehoge.js',
-    			'<%= path.root %>/<%= path.src %>/js/hogehoge2.js',
-    			'<%= path.root %>/<%= path.src %>/js/hogehoge3.js',
-    			'<%= path.root %>/<%= path.src %>/js/hogehoge4.js'
+    			'<%= path.root %>/<%= path.src %>/js/modernizr.js',
+    			'<%= path.root %>/<%= path.src %>/js/jquery.min.js',
+    			'<%= path.root %>/<%= path.src %>/js/hogehoge.js'
     		],
     		dest: '<%= path.root %>/<%= path.src %>/js/dest/run-all.js
     	}
