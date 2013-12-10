@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 		 ------------------------------------------------------------------------*/
 		typescript: {
 			base: {
-				src: ['<%%= path.root %>/<%%= path.compile %>/*.ts'],
+				src: ['<%%= path.root %>/<%%= path.compile %>/ts/*.ts'],
 				dest: '<%%= path.root %>/<%%= path.src %>/js',
 				options: {
 					base_path: '<%%= path.root %>/<%%= path.compile %>'
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 				},
 				expand: true,
 				flatten: true,
-				cwd: '<%%= path.root %>/<%%= path.compile %>',
+				cwd: '<%%= path.root %>/<%%= path.compile %>/coffee',
 				src: ['*.coffee'],
 				dest: '<%%= path.root %>/<%%= path.src %>/js',
 				ext: '.js'
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					basePath: '<%%= path.root %>/',
-					sassDir: '<%%= path.compile %>',
+					sassDir: '<%%= path.compile %>/scss',
 					cssDir: '<%%= path.src %>/css',
 					//compassのimgディレクトリ（スプライトを書き出すディレクトリ
 					imagesDir : '<%%= path.src %>/img',
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
 					'<%%= path.root %>/<%%= path.src %>/css/hogehoge.css',
 					'<%%= path.root %>/<%%= path.src %>/css/hogehoge2.css'
 				],
-				dest: '<%%= path.root %>/<%%= path.src %>/all/style-all.css'
+				dest: '<%%= path.root %>/<%%= path.src %>/css/dest/style-all.css'
 			},
 			run: {
 				src: [
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 					'<%%= path.root %>/<%%= path.src %>/js/hogehoge.js',
 					'<%%= path.root %>/<%%= path.src %>/js/hogehoge2.js'
 				],
-				dest: '<%%= path.root %>/<%%= path.src %>/all/run-all.js'
+				dest: '<%%= path.root %>/<%%= path.src %>/js/dest/run-all.js'
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -106,8 +106,8 @@ module.exports = function(grunt) {
 				preserveComments: "some"
 			},
 			run: {
-				src: ['<%%= path.root %>/<%%= path.src %>/all/run-all.js'],
-				dest: '<%%= path.root %>/<%%= path.src %>/all/run-all.min.js'
+				src: ['<%%= path.root %>/<%%= path.src %>/js/dest/run-all.js'],
+				dest: '<%%= path.root %>/<%%= path.src %>/js/dest/run-all.min.js'
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -116,33 +116,70 @@ module.exports = function(grunt) {
 		 ------------------------------------------------------------------------*/
 		cssmin: {
 			style: {
-				src: ['<%%= path.root %>/<%%= path.src %>/all/style-all.css'],
-				dest: '<%%= path.root %>/<%%= path.src %>/all/style-all.min.css'
+				src: ['<%%= path.root %>/<%%= path.src %>/css/dest/style-all.css'],
+				dest: '<%%= path.root %>/<%%= path.src %>/css/dest/style-all.min.css'
 			}
 		},
 		//-----------------------------------------------------------------------
 
-		/* cssプロパティの並び替え
+		/* cssファイルの不要prefix消去
 		 ------------------------------------------------------------------------*/
-		csscomb: {
-			dist: {
-				files: {
-					'<%%= path.root %>/<%%= path.src %>/all/style-all.css': ['<%%= path.root %>/<%%= path.src %>/all/style-all.css']
-				}
+		autoprefixer: {
+			options: {
+				// ブラウザのバージョン指定
+				browsers: ['last 2 version', 'ie 8']
+			},
+			no_dest: {
+				src: '<%%= path.root %>/<%%= path.src %>/css/*.css'
 			}
 		},
 		//-----------------------------------------------------------------------
 
-		/* jsHintによるjsデバッグ。結果はコンソールに表示
+		/* csscssによるcssチェック。結果はコンソールに表示
+		 ------------------------------------------------------------------------*/
+		csscss: {
+			options: {
+				compass: true,
+				ignoreSassMixins: true
+			},
+			dist: {
+				src: ['<%%= path.root %>/<%%= path.src %>/css/*.css']
+			}
+		},
+		//-----------------------------------------------------------------------
+
+		/* csslintによるcssチェック。結果はコンソールに表示
+		 ------------------------------------------------------------------------*/
+		csslint: {
+			dist: {
+				src: ['<%%= path.root %>/<%%= path.src %>/css/*.css']
+			}
+		},
+		//-----------------------------------------------------------------------
+
+		/* jsHintによるjsチェック。結果はコンソールに表示
 		 ------------------------------------------------------------------------*/
 		jshint: {
 			// 対象ファイルを指定
 			all: [
-				'<%%= path.root %>/<%%= path.src %>/js/*.js',
-				'!<%%= path.root %>/<%%= path.src %>/js/*.min.js',
-				'!<%%= path.root %>/<%%= path.src %>/js/*-all.js',
-				'!<%%= path.root %>/<%%= path.src %>/js/lib/*.js'
+				'<%%= path.root %>/<%%= path.src %>/js/*.js'
 			]
+		},
+		//-----------------------------------------------------------------------
+
+		/* styleguideの作成
+		 ------------------------------------------------------------------------*/
+		kss: {
+			options: {
+				includeType: 'css',
+				includePath: '<%%= path.root %>/<%%= path.src %>/css/dest/style-all.min.css',
+				template: '<%%= path.root %>/<%%= path.documents %>/styleguide_temp'
+			},
+			dist: {
+				files: {
+					'<%%= path.root %>/<%%= path.documents %>/modules': ['<%%= path.root %>/<%%= path.compile %>/scss']
+				}
+			}
 		},
 		//-----------------------------------------------------------------------
 
@@ -184,7 +221,11 @@ module.exports = function(grunt) {
 		 ------------------------------------------------------------------------*/
 		esteWatch: {
 			options: {
-				dirs: ['<%%= path.root %>/<%%= path.compile %>/'],
+				dirs: [
+					'<%%= path.root %>/<%%= path.compile %>/scss',
+					'<%%= path.root %>/<%%= path.compile %>/coffee',
+					'<%%= path.root %>/<%%= path.compile %>/ts'
+				],
 				livereload: {
 					enabled: false
 				}
@@ -198,7 +239,7 @@ module.exports = function(grunt) {
 				return ['typescript:base:src:' + filepath,'jshint','concat:run','uglify'];
 			},
 			scss: function(filepath) {
-				return ['compass','concat:style','csscomb','cssmin'];
+				return ['compass','csscss','autoprefixer:no_dest','csslint','concat:style','cssmin'];
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -225,9 +266,9 @@ module.exports = function(grunt) {
 		copy: {
 			setup: {
 				files: [
-					{ expand: true, cwd: 'bower_components/jquery', src: ['jquery.min.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/js/lib' },
-					{ expand: true, cwd: 'bower_components/modernizr', src: ['modernizr.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/js/lib' },
-					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/css' },
+					{ expand: true, cwd: 'bower_components/jquery', src: ['jquery.min.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
+					{ expand: true, cwd: 'bower_components/modernizr', src: ['modernizr.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
+					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, src: 'package.json', dest: '<%= _dev %>' },
 					{ expand: true, src: 'Gruntfile.js', dest: '<%= _dev %>' },
 					{ expand: true, src: '.bowerrc', dest: '<%= _dev %>' },
@@ -261,7 +302,7 @@ module.exports = function(grunt) {
 	});
 
 	// gruntコマンドを打つと走るタスクです。
-	grunt.registerTask('default', ['coffee:compileAll','typescript','compass','concat','csscomb','uglify','cssmin','jshint']);
+	grunt.registerTask('default', ['coffee:compileAll','typescript','compass','csscss','autoprefixer:no_dest','csslint','jshint','concat','uglify','cssmin']);
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['copy','clean:prepare']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
@@ -270,6 +311,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('imagemin', ['imagemin']);
 	// grunt webfontコマンドを打つと走るタスクです。webfontを作成します。
 	grunt.registerTask('webfont', ['webfont']);
+	// grunt styleコマンドを打つと走るタスクです。styleguideを作成します。
+	grunt.registerTask('style', ['kss']);
 
 	// loadNpmTasksを変更（プラグイン読み込み）
 	var taskName;

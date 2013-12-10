@@ -91,19 +91,24 @@ GiraffeGenerator.prototype.app = function app() {
 	this.mkdir(this.rootDirectory);
 	this.mkdir(this._dev);
 	this.mkdir(this.rootDirectory + '/' + this.common);
-	this.mkdir(this.rootDirectory + '/' + this.common + '/all');
 	this.mkdir(this.rootDirectory + '/' + this.common + '/css');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/js');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/css' + 'dest');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/js' + 'dest');
 	this.mkdir(this.rootDirectory + '/' + this.common + '/img');
 	this.mkdir(this.rootDirectory + '/' + this.common + '/include');
-	this.mkdir(this.rootDirectory + '/' + this.common + '/js');
-	this.mkdir(this.rootDirectory + '/' + this.common + '/js/lib');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/lib');
 	if(this.OS){
 		this.mkdir(this.rootDirectory + '/' + this.common + '/fonts');
 		this.mkdir(this.rootDirectory + '/' + this.common + '/fonts/icons');
 	}
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile);
+	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'scss');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'coffee');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'ts');
 	this.mkdir(this.rootDirectory + '/' + this._documents);
 	this.mkdir(this.rootDirectory + '/' + this._documents + '/modules');
+	this.mkdir(this.rootDirectory + '/' + this._documents + '/styleguide_temp');
 
 	//各種設定ファイルのコピー
 	if(this.OS){
