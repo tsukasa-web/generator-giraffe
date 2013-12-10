@@ -9,36 +9,41 @@ A generator for [Yeoman](http://yeoman.io).
 
 ### 機能
 
-* ディレクトリの初期構築・初期構築後の不要ファイル削除
+* ディレクトリの初期構築
 * CoffeeScriptのコンパイル
 * TypeScriptのコンパイル
 * Sassのコンパイル
 * css/jsファイルの結合＆圧縮
-* jsHintによるデバッグ
-* watchによるファイル更新の監視→コンパイル・結合・圧縮・デバッグの自動化
+* jsHintによるチェック
+* cssLintによるチェック
+* cssの重複プロパティチェック
+* cssの不要プレフィックス削除
+* este-watchによるファイル更新の監視→コンパイル・結合・圧縮・デバッグの自動化
 * 自動ブラウザリロード
-* jQueryの取得
+* jQueryの取得（バージョン指定可）
 * 最新normalize.cssの取得
 * 最新modernizr.jsの取得
 * 画像圧縮
 * config.rb連動によるスプライト画像のランダム文字列消去
-* Macパッケージのみcssプロパティの並び替え追加
+* grunt-kssによるスタイルガイド生成
 * Macパッケージのみwebfont作成機能の追加
 
 ### Install
 
 使用する前に以下のツール群をインストールする必要があります。  
-一部古いNode.jsに対応していないものもあるため、  
-バージョンが古い場合は、できるだけアップデートしておくことを推奨します。
+一部古いNode.jsに対応していないものもあるため、  バージョンが古い場合は、できるだけアップデートしておくことを推奨します。  
+Windows環境では[Rubyのインストール](https://www.ruby-lang.org/ja/downloads/)、MacとWindow両方とも[Sass](http://sass-lang.com/install)/[Compass](http://compass-style.org/install/)のインストールが前提になります。
 
 - [Node.js](http://nodejs.jp/)
 - [Yeoman](http://yeoman.io/)
 - [Grunt](http://gruntjs.com/)
 - [Bower](http://bower.io/)
 - [livereloadx](http://nitoyon.github.io/livereloadx/)
+- [csscss](http://zmoazeni.github.io/csscss/)
 
 ```
 $ npm install -g yo grunt-cli bower livereloadx
+$ gem install csscss
 ```
 
 MacOSの場合はさらにgrunt-webfontを使用するために
@@ -97,7 +102,7 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
     			'<%= path.root %>/<%= path.src %>/css/hogehoge2.css',
     			'<%= path.root %>/<%= path.src %>/css/hogehoge3.css'
     		],
-    		dest: '<%= path.root %>/<%= path.src %>/all/style-all.css'
+    		dest: '<%= path.root %>/<%= path.src %>/css/dest/style-all.css'
     	},
     	run: {
     		src: [
@@ -106,7 +111,7 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
     			'<%= path.root %>/<%= path.src %>/js/hogehoge3.js',
     			'<%= path.root %>/<%= path.src %>/js/hogehoge4.js'
     		],
-    		dest: '<%= path.root %>/<%= path.src %>/all/run-all.js
+    		dest: '<%= path.root %>/<%= path.src %>/js/dest/run-all.js
     	}
     },
 
@@ -158,6 +163,12 @@ cmd_batまたはcmd_commandフォルダの中にあるgrunt_imagemin.batまた�
 上記の記述のsrcの中を追記していただけると追加することができます。  
 optimizationLevelを変更することで圧縮レベルを変更できます。（0～7）
 
+#### styleguideの作成
+
+cmd_batまたはcmd_commandフォルダの中にあるgrunt_style-guideを叩くとstyleguideの作成が始まります。初期設定ではtemplate格納先はstyleguide_tempフォルダに、出力先はmodulesフォルダ内に設定されています。
+
+- [grunt-kss](https://github.com/t32k/grunt-kss)
+
 #### webfontの作成（Macのみ）
 
 cmd_batまたはcmd_commandフォルダの中にあるgrunt_webfontを叩くとwebfontの作成が始まります。初期設定では/common/fonts/iconsフォルダにaiファイルを格納してください。
@@ -175,7 +186,6 @@ cmd_batまたはcmd_commandフォルダの中にあるgrunt_webfontを叩くとw
     				}
     			}
     		},
-
 
 ## License
 
