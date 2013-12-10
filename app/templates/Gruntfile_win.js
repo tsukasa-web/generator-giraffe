@@ -250,6 +250,8 @@ module.exports = function(grunt) {
 					{ expand: true, cwd: 'bower_components/jquery', src: ['jquery.min.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/modernizr', src: ['modernizr.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
+					{ expand: true, cwd: 'bower_components/font-awesome/font', src: ['**'], dest: '<%%= path.root %>/<%%= path.src %>/fonts' },
+					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['**'], dest: '<%%= path.root %>/<%%= path.compile %>/scss/libs' },
 					{ expand: true, src: 'package.json', dest: '<%= _dev %>' },
 					{ expand: true, src: 'Gruntfile.js', dest: '<%= _dev %>' },
 					{ expand: true, src: '.bowerrc', dest: '<%= _dev %>' },

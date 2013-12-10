@@ -45,6 +45,12 @@ GiraffeGenerator.prototype.askFor = function askFor() {
 			default: 'Y/n'
 		},
 		{
+			type: 'confirm',
+			name: 'fontawesome',
+			message: 'Do you use font-awesome? default(Yes)',
+			default: 'Y/n'
+		},
+		{
 			name: 'jqueryversion default(latest)',
 			message: 'jQuery version?'
 		},
@@ -75,6 +81,7 @@ GiraffeGenerator.prototype.askFor = function askFor() {
 		this.localhost = props.localhost;
 		this.rootDirectory = props.rootDirectory;
 		this.OS = props.OS;
+		this.fontawesome = props.fontawesome;
 		this.jqueryversion = props.jqueryversion;
 		this.common = props.common;
 		this.compile = props.compile;
@@ -104,6 +111,9 @@ GiraffeGenerator.prototype.app = function app() {
 	}
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile);
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'scss');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'scss' + 'core');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'scss' + 'libs');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'scss' + 'modules');
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'coffee');
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + 'ts');
 	this.mkdir(this.rootDirectory + '/' + this._documents);
