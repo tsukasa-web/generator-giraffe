@@ -9,7 +9,8 @@ module.exports = function(grunt) {
 		root: '../<%= rootDirectory %>',				// project root
 		src: '<%= common %>',				// 共通リソースの配置先
 		compile: '<%= common %>/<%= compile %>',	// コンパイル言語ソース類の配置先
-		dev: '../<%= _dev %>'
+		dev: '../<%= _dev %>',
+		documents: '<%= _documents %>'
 	};
 
 	grunt.initConfig({
