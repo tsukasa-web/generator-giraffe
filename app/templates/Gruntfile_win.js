@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 		typescript: {
 			base: {
 				src: ['<%%= path.root %>/<%%= path.compile %>/ts/*.ts'],
-				dest: '<%%= path.root %>/<%%= path.src %>/js',
+				dest: '<%%= path.root %>/<%%= path.src %>/js/dest',
 				options: {
 					base_path: '<%%= path.root %>/<%%= path.compile %>'
 				}
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 				flatten: true,
 				cwd: '<%%= path.root %>/<%%= path.compile %>/coffee',
 				src: ['*.coffee'],
-				dest: '<%%= path.root %>/<%%= path.src %>/js',
+				dest: '<%%= path.root %>/<%%= path.src %>/js/dest',
 				ext: '.js'
 			},
 			compile: {
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 				expand: true,
 				flatten: true,
 				src: ['*.coffee'],
-				dest: '<%%= path.root %>/<%%= path.src %>/js',
+				dest: '<%%= path.root %>/<%%= path.src %>/js/dest',
 				ext: '.js'
 			}
 		},
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 				options: {
 					basePath: '<%%= path.root %>/',
 					sassDir: '<%%= path.compile %>/scss',
-					cssDir: '<%%= path.src %>/css',
+					cssDir: '<%%= path.src %>/css/dest',
 					//compassのimgディレクトリ（スプライトを書き出すディレクトリ
 					imagesDir : '<%%= path.src %>/img',
 					config: 'config.rb'
@@ -81,18 +81,18 @@ module.exports = function(grunt) {
 		concat: {
 			style: {
 				src: [
-					'<%%= path.root %>/<%%= path.src %>/css/normalize.css',
-					'<%%= path.root %>/<%%= path.src %>/css/hogehoge.css'
+					'<%%= path.root %>/<%%= path.src %>/lib/normalize.css',
+					'<%%= path.root %>/<%%= path.src %>/css/dest/hogehoge.css'
 				],
-				dest: '<%%= path.root %>/<%%= path.src %>/css/dest/style-all.css'
+				dest: '<%%= path.root %>/<%%= path.src %>/css/style-all.css'
 			},
 			run: {
 				src: [
 					'<%%= path.root %>/<%%= path.src %>/js/lib/modernizr.js',
 					'<%%= path.root %>/<%%= path.src %>/js/lib/jquery.min.js',
-					'<%%= path.root %>/<%%= path.src %>/js/hogehoge.js'
+					'<%%= path.root %>/<%%= path.src %>/js/dest/hogehoge.js'
 				],
-				dest: '<%%= path.root %>/<%%= path.src %>/js/dest/run-all.js'
+				dest: '<%%= path.root %>/<%%= path.src %>/js/run-all.js'
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -104,8 +104,8 @@ module.exports = function(grunt) {
 				preserveComments: "some"
 			},
 			run: {
-				src: ['<%%= path.root %>/<%%= path.src %>/js/dest/run-all.js'],
-				dest: '<%%= path.root %>/<%%= path.src %>/js/dest/run-all.min.js'
+				src: ['<%%= path.root %>/<%%= path.src %>/js/run-all.js'],
+				dest: '<%%= path.root %>/<%%= path.src %>/js/run-all.min.js'
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -114,8 +114,8 @@ module.exports = function(grunt) {
 		 ------------------------------------------------------------------------*/
 		cssmin: {
 			style: {
-				src: ['<%%= path.root %>/<%%= path.src %>/css/dest/style-all.css'],
-				dest: '<%%= path.root %>/<%%= path.src %>/css/dest/style-all.min.css'
+				src: ['<%%= path.root %>/<%%= path.src %>/css/style-all.css'],
+				dest: '<%%= path.root %>/<%%= path.src %>/css/style-all.min.css'
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
 				browsers: ['last 2 version', 'ie 8']
 			},
 			no_dest: {
-				src: '<%%= path.root %>/<%%= path.src %>/css/*.css'
+				src: '<%%= path.root %>/<%%= path.src %>/css/dest/*.css'
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -141,7 +141,7 @@ module.exports = function(grunt) {
 				ignoreSassMixins: true
 			},
 			dist: {
-				src: ['<%%= path.root %>/<%%= path.src %>/css/*.css']
+				src: ['<%%= path.root %>/<%%= path.src %>/css/dest/*.css']
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -150,7 +150,7 @@ module.exports = function(grunt) {
 		 ------------------------------------------------------------------------*/
 		csslint: {
 			dist: {
-				src: ['<%%= path.root %>/<%%= path.src %>/css/*.css']
+				src: ['<%%= path.root %>/<%%= path.src %>/css/dest/*.css']
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -160,7 +160,7 @@ module.exports = function(grunt) {
 		jshint: {
 			// 対象ファイルを指定
 			all: [
-				'<%%= path.root %>/<%%= path.src %>/js/*.js'
+				'<%%= path.root %>/<%%= path.src %>/js/dest/*.js'
 			]
 		},
 		//-----------------------------------------------------------------------
@@ -170,7 +170,7 @@ module.exports = function(grunt) {
 		kss: {
 			options: {
 				includeType: 'css',
-				includePath: '<%%= path.root %>/<%%= path.src %>/css/dest/style-all.min.css',
+				includePath: '<%%= path.root %>/<%%= path.src %>/css/style-all.min.css',
 				template: '<%%= path.root %>/<%%= path.documents %>/styleguide_temp'
 			},
 			dist: {
@@ -203,9 +203,9 @@ module.exports = function(grunt) {
 		esteWatch: {
 			options: {
 				dirs: [
-					'<%%= path.root %>/<%%= path.compile %>/scss',
-					'<%%= path.root %>/<%%= path.compile %>/coffee',
-					'<%%= path.root %>/<%%= path.compile %>/ts'
+					'<%%= path.root %>/<%%= path.compile %>/scss/*',
+					'<%%= path.root %>/<%%= path.compile %>/coffee/*',
+					'<%%= path.root %>/<%%= path.compile %>/ts/*'
 				],
 				livereload: {
 					enabled: false
