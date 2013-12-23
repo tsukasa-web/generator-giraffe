@@ -121,6 +121,7 @@ GiraffeGenerator.prototype.app = function app() {
 	}
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile);
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss');
+	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/lib');
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/coffee');
 	this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/ts');
 	this.mkdir(this.rootDirectory + '/' + this._documents);
@@ -128,7 +129,19 @@ GiraffeGenerator.prototype.app = function app() {
 	this.mkdir(this.rootDirectory + '/' + this._documents + '/styleguide_temp');
 
 	//scssのライブラリのコピー
-	this.directory('scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss');
+	this.directory('scss/core', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/core');
+	this.directory('scss/modules', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/modules');
+	this.template('scss/lib/_extends.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + 'lib' + '/_extends.scss');
+	this.template('scss/lib/_function.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + 'lib' + '/_function.scss');
+	this.template('scss/lib/_hack.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + 'lib' + '/_hack.scss');
+	this.template('scss/lib/_library.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + 'lib' + '/_library.scss');
+	this.template('scss/lib/_mixins.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + 'lib' + '/_mixins.scss');
+	if(this.sprite){
+		this.template('scss/lib/_sprite.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + 'lib' + '/_sprite.scss');
+	}
+	this.template('scss/_core.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/_core.scss');
+	this.template('scss/_module.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/_module.scss');
+	this.template('scss/style.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/style.scss');
 
 	//各種設定ファイルのコピー
 	if(this.OS){
