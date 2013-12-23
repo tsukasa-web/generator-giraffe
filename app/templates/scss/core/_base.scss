@@ -1,0 +1,27 @@
+@charset "UTF-8";
+//-------------------------------------//
+//  User's Base Style
+//-------------------------------------//
+
+body {
+	font-size: $font-size-base;
+	font-family: $font-family-body;
+	-webkit-text-size-adjust: 100%;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+img {
+	vertical-align: bottom;
+	font-size: 0;
+	line-height: 0;
+}
+
+select, button, input, textarea {
+	display: block;
+	width: 100%;
+	-webkit-appearance: none;
+}

@@ -28,6 +28,7 @@ A generator for [Yeoman](http://yeoman.io).
 * config.rb連動によるスプライト画像のランダム文字列消去
 * grunt-kssによるスタイルガイド生成
 * Macパッケージのみwebfont作成機能の追加
+* 各種mixinなどのscssライブラリを追加
 
 ### Install
 

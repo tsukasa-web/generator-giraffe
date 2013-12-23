@@ -1,0 +1,75 @@
+@charset "UTF-8";
+//-------------------------------------//
+//  Settings
+//-------------------------------------//
+
+//Compass
+@import "compass";
+// SVG指定も出力するように(IE9用)
+$experimental-support-for-svg: true;
+
+//  Browser
+//-------------------------------------
+$supportIe7: false;
+$supportIe8: true;
+$supportIe9: true;
+
+//  Variables
+//-------------------------------------
+
+// FixedWidth
+$site-width: 940px;
+$column-width: 700px;
+
+// SemanticGridSystemSetting
+$column-width: 60;
+$gutter-width: 20;
+$columns: 12;
+// FluilLayout時に設定。単位がピクセルから%になる
+$total-width: 100%;
+
+// BreakPoint
+$bp-pc: 1024px;
+$bp-tab: 768px;
+$bp-sp: 320px;
+
+// Colors
+$color-a: #f8b500;
+$color-b: #fbd366;
+$color-c: #000000;
+$color-d: #222222;
+$color-e: #3b3b3b;
+$color-f: #727172;
+$color-g: #dddddd;
+$color-h: #ffffff;
+
+// Spaces
+$space-base: 6px;
+$space-2: $space-base * 2;
+$space-3: $space-base * 4;
+$space-4: $space-base * 6;
+
+// Font Size
+$font-size-base: 12px;
+$font-size-1: $font-size-base - 4px;
+$font-size-2: $font-size-base - 2px;
+$font-size-3: $font-size-base + 2px;
+$font-size-4: $font-size-base + 4px;
+$font-size-5: $font-size-base + 6px;
+
+// Border Radius
+$radius-base: 3px;
+$radius-2: $radius-base * 2;
+$radius-3: $radius-base * 4;
+
+//LineHeight
+$designed-line-height: 26px;
+$base-line-height: $designed-line-height / $font-size-base;
+$base-line-height: round($base-line-height * 10) / 10; // 小数点第二位で四捨五入
+
+// Font Settings
+$font-family-body: "メイリオ","Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//  Mixins & Extends
+//-------------------------------------
+@import "../lib/library";

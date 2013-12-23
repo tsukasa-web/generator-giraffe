@@ -205,8 +205,8 @@ module.exports = function(grunt) {
 			options: {
 				dirs: [
 					'<%%= path.root %>/<%%= path.compile %>/scss/*',
-					'<%%= path.root %>/<%%= path.compile %>/coffee/*',
-					'<%%= path.root %>/<%%= path.compile %>/ts/*'
+					'<%%= path.root %>/<%%= path.compile %>/coffee/',
+					'<%%= path.root %>/<%%= path.compile %>/ts/'
 				],
 				livereload: {
 					enabled: false
@@ -214,14 +214,14 @@ module.exports = function(grunt) {
 			},
 			coffee: function(filepath) {
 				grunt.config(["coffee", "compile", "src"], filepath);
-				return ['coffee:compile:src:' + filepath,'jshint','concat:run','uglify'];
+				return ['coffee:compile:src:' + filepath,'concat:run','uglify'];
 			},
 			ts: function(filepath) {
 				grunt.config(["typescript", "base", "src"], filepath);
-				return ['typescript:base:src:' + filepath,'jshint','concat:run','uglify'];
+				return ['typescript:base:src:' + filepath,'concat:run','uglify'];
 			},
 			scss: function(filepath) {
-				return ['compass','csscss','autoprefixer:no_dest','csslint','concat:style','cssmin'];
+				return ['compass','csscss','autoprefixer:no_dest','concat:style','cssmin'];
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -293,6 +293,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('watch_files', ['open','livereloadx','esteWatch']);
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
+	// grunt lintコマンドを打つと走るタスクです。css/jsをチェックします。
+	grunt.registerTask('lint', ['csslint','jshint']);
 	// grunt styleコマンドを打つと走るタスクです。styleguideを作成します。
 	grunt.registerTask('style', ['kss']);
 
