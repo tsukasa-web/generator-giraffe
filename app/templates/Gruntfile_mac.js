@@ -89,7 +89,6 @@ module.exports = function(grunt) {
 			},
 			run: {
 				src: [
-					'<%%= path.root %>/<%%= path.src %>/js/lib/modernizr.js',
 					'<%%= path.root %>/<%%= path.src %>/js/lib/jquery.min.js',
 					'<%%= path.root %>/<%%= path.src %>/js/dest/hogehoge.js'
 				],
