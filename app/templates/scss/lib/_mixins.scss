@@ -78,15 +78,6 @@
 //	}
 //-------------------------------------------------------------------------------------------------------
 
-// 合計幅を計算
-$gridsystem-width: ($column-width*$columns) + ($gutter-width*$columns) * 1px;
-// Set $total-width to 100% for a fluid layout
-$total-width: $gridsystem-width;
-// IE7対応設定
-@if ($supportIe7 == true) {
- $min-width: 960;
- $correction: 0.5 / $min-width * 100 * 1%;
-}
 // 包括クラス
 @mixin row($columns:$columns) {
 	display: block;
@@ -125,7 +116,7 @@ $total-width: $gridsystem-width;
 //	  @include column-unit(3,20px);
 //	}
 //-------------------------------------------------------------------------------------------------------
-@mixin column-unit($column-num,$margin-num,$column-parent-width:$column-width) {
+@mixin column-unit($column-num,$margin-num,$column-parent-width:$main-column-width) {
 	@extend %clearfix;
 	.segment{
 		float: left;
