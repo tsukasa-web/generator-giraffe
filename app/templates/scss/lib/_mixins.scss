@@ -22,7 +22,7 @@
 }
 
 // SemanticGridSystem from http://semantic.gs/
-// _setting.scssのGrid値に沿って生成される
+// _setting.scssのGrid値に沿って生成される。
 //-------------------------------------------------------------------------------------------------------
 //	$span: グリッド数
 //
@@ -83,8 +83,10 @@
 	display: block;
 	width: $total-width*(($gutter-width + $gridsystem-width)/$gridsystem-width);
 	margin: 0 $total-width*((($gutter-width*.5)/$gridsystem-width)*-1);
-	// *width: $total-width*(($gutter-width + $gridsystem-width)/$gridsystem-width)-$correction;
-	// *margin: 0 $total-width*((($gutter-width*.5)/$gridsystem-width)*-1)-$correction;
+	@if ($supportIe7 == true) {
+		*width: $total-width*(($gutter-width + $gridsystem-width)/$gridsystem-width)-$correction;
+		*margin: 0 $total-width*((($gutter-width*.5)/$gridsystem-width)*-1)-$correction;
+	}
 	@extend %clearfix;
  }
 // カラムクラス
@@ -93,8 +95,10 @@
 	float: left;
 	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / $gridsystem-width);
 	margin: 0 $total-width*(($gutter-width*.5)/$gridsystem-width);
-	// *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / $gridsystem-width)-$correction;
-	// *margin: 0 $total-width*(($gutter-width*.5)/$gridsystem-width)-$correction;
+	@if ($supportIe7 == true) {
+		*width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / $gridsystem-width)-$correction;
+		*margin: 0 $total-width*(($gutter-width*.5)/$gridsystem-width)-$correction;
+	}
 }
 
 @mixin push($offset:1) {
@@ -104,7 +108,7 @@
 	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / $gridsystem-width) + $total-width*(($gutter-width*.5)/$gridsystem-width);
 }
 
-// 固定幅サイト用簡易型カラム生成mixin
+// 固定幅サイト用簡易型等幅カラム生成mixin
 // _setting.scssのカラム幅を使用。デザインでmarginが決まり切ってる際に使用
 //-------------------------------------------------------------------------------------------------------
 //	$column-num: カラム数
@@ -357,11 +361,11 @@
 
 	@media
 	only screen and (-webkit-min-device-pixel-ratio: 2),
-	only screen and (   min--moz-device-pixel-ratio: 2),
-	only screen and (     -o-min-device-pixel-ratio: 2/1),
-	only screen and (        min-device-pixel-ratio: 2),
-	only screen and (                min-resolution: 192dpi),
-	only screen and (                min-resolution: 2dppx) {
+	only screen and (min--moz-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 2/1),
+	only screen and (min-device-pixel-ratio: 2),
+	only screen and (min-resolution: 192dpi),
+	only screen and (min-resolution: 2dppx) {
 		background-image: url(#{file-2x});
 		background-size: $width-1x $height-1x;
 	}
@@ -428,32 +432,13 @@
 @mixin  inline_block {
 	display: inline-block;
 	@if ($supportIe7 == true) {
-		@include hack("ie7") {
-			*display: inline;
-			*zoom: 1;
-		}
+		*display: inline;
+		*zoom: 1;
 	}
 }
 
 // 頻出スタイルmixin
 //-------------------------------------------------------------------------------------------------------
-
-// 透明度設定
-@mixin opacity($opacity) {
-	opacity: $opacity;
-	@if ($supportIe8 == true) {
-		@include hack("ie8") {
-			$opacity-ie: $opacity * 100;
-			filter: alpha(opacity=$opacity-ie);
-		}
-	}
-	@if ($supportIe7 == true) {
-		@include hack("ie7") {
-			$opacity-ie: $opacity * 100;
-			filter: alpha( opacity=50 );
-		}
-	}
-}
 
 // 中央揃え
 @mixin center-block {
