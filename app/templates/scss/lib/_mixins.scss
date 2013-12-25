@@ -34,13 +34,13 @@
 //	$total-width: 100%; ←FluidLayout時に設定する
 //
 //	使用時の記述①通常カラム
-//	header { .column(12); }
-//	article { .column(9); }
-//	aside { .column(3); }
+//	header { @include column(12); }
+//	article { @include column(9); }
+//	aside { @include column(3); }
 //
 //	@media (max-device-width: 960px) {
-//		article { .column(12); }
-//		aside { .column(12); }
+//		article { @include column(12); }
+//		aside { @include column(12); }
 //	}
 //
 //	使用時の記述②通常カラムの入れ子
@@ -57,55 +57,52 @@
 //	<aside>...</aside>
 //
 //	article {
-//		.column(9);
+//		@include column(9);
 //		ul {
-//			.row(9);
+//			@include row(9);
 //			li {
-//				.column(3,9);
+//				@include column(3,9);
 //			}
 //		}
 //	}
 //	aside {
-//		.column(3);
+//		@include column(3);
 //	}
 //
 //	使用時の記述③カラムのインデント
 //	article {
-//		.push(2);
+//		@include push(2);
 //	}
 //	article {
-//		.pull(2);
+//		@include pull(2);
 //	}
 //-------------------------------------------------------------------------------------------------------
 
-// 包括クラス
 @mixin row($columns:$columns) {
 	display: block;
-	width: $total-width*(($gutter-width + $gridsystem-width)/$gridsystem-width);
-	margin: 0 $total-width*((($gutter-width*.5)/$gridsystem-width)*-1);
+	width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns));
+	margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1);
 	@if ($supportIe7 == true) {
-		*width: $total-width*(($gutter-width + $gridsystem-width)/$gridsystem-width)-$correction;
-		*margin: 0 $total-width*((($gutter-width*.5)/$gridsystem-width)*-1)-$correction;
+		*width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns))-$correction;
+		*margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1)-$correction;
 	}
 	@extend %clearfix;
- }
-// カラムクラス
+}
 @mixin column($x,$columns:$columns) {
 	display: inline;
 	float: left;
-	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / $gridsystem-width);
-	margin: 0 $total-width*(($gutter-width*.5)/$gridsystem-width);
+	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
+	margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 	@if ($supportIe7 == true) {
-		*width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / $gridsystem-width)-$correction;
-		*margin: 0 $total-width*(($gutter-width*.5)/$gridsystem-width)-$correction;
+		*width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns))-$correction;
+		*margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns))-$correction;
 	}
 }
-
 @mixin push($offset:1) {
-	margin-left: $total-width*((($gutter-width+$column-width)*$offset) / $gridsystem-width) + $total-width*(($gutter-width*.5)/$gridsystem-width);
+	margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
 @mixin pull($offset:1) {
-	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / $gridsystem-width) + $total-width*(($gutter-width*.5)/$gridsystem-width);
+	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
 
 // 固定幅サイト用簡易型等幅カラム生成mixin

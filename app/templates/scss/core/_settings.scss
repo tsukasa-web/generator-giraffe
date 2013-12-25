@@ -14,22 +14,18 @@ $supportIe7: false;
 $supportIe8: true;
 $supportIe9: true;
 
-// SemanticGridSystemSetting(使わない時は丸ごと消してok)
+// SemanticGridSystemSetting(使わない時は丸ごと消してOK)
 //-------------------------------------
-$column-width: 60;
-$gutter-width: 20;
+// Defaults which you can freely override
+$column-width: 60px;
+$gutter-width: 20px;
 $columns: 12;
-// FluilLayout時に設定。単位がピクセルから%になる
-$total-width: 100%;
-// 合計幅を計算
-$gridsystem-width: ($column-width*$columns) + ($gutter-width*$columns) * 1px;
-// Set $total-width to 100% for a fluid layout
-$total-width: $gridsystem-width;
-// IE7対応設定
-@if ($supportIe7 == true) {
-	$min-width: 960;
-	$correction: 0.5 / $min-width * 100 * 1%;
+// Utility function — you should never need to modify this
+@function gridsystem-width($columns:$columns) {
+	@return ($column-width * $columns) + ($gutter-width * $columns);
 }
+// fluid layout時は100%に設定する
+$total-width: gridsystem-width($columns);
 
 //  Variables
 //-------------------------------------
