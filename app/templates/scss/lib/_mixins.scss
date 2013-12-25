@@ -28,9 +28,9 @@
 //
 //	【使いかた】
 //	_setting.scssの記述
-//	@column-width: 60;
-//	@gutter-width: 20;
-//	@columns: 12;
+//	$column-width: 60;
+//	$gutter-width: 20;
+//	$columns: 12;
 //	$total-width: 100%; ←FluidLayout時に設定する
 //
 //	使用時の記述①通常カラム
