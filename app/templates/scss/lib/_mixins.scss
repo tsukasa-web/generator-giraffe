@@ -111,7 +111,8 @@
 //        $column-num: カラム数
 //        $margin-num: マージンの大きさ
 //        $column-parent-width: 親カラムの大きさ(初期値は設定値)
-//        $child-num:一行のイメージ数を入力。イメージリストの際に使用。
+//        $list-num:一行のイメージ数を入力。イメージリストの際に使用。
+//        $list-num:liの下部マージン。イメージリストの際に使用。
 //
 //        【使いかた】
 //        .column-layout-3 {
@@ -119,12 +120,12 @@
 //        }
 //
 //        .list-image-01{
-//          @include column-unit(2, 10px, 2);
+//          @include column-unit(2, 10px, 2, 10px);
 //        }
 //-------------------------------------------------------------------------------------------------------
-@mixin column-unit($column-num,$margin-num,$child-num:defaultNum,$column-parent-width:$column-width) {
+@mixin column-unit($column-num, $margin-num, $list-num:defaultNum, $list-bottom-margin:0, $column-parent-width:$column-width) {
 	@extend %clearfix;
-	@if $child-num == defaultNum {
+	@if $list-num == defaultNum {
 		.segment{
 			float: left;
 			margin-right: $margin-num;
@@ -135,13 +136,13 @@
 			}
 		}
 	}
-	@if $child-num != defaultNum {
+	@if $list-num != defaultNum {
 		li{
 			float: left;
-			margin-right: $margin-num;
+			margin: 0 $margin-num $list-bottom-margin 0;
 			width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
 
-			&:nth-child(#{#{$child-num+"n"} + $child-num}){
+			&:nth-child(#{#{$list-num+"n"} + $list-num}){
 				margin-right: 0;
 			}
 		}
