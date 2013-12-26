@@ -105,27 +105,39 @@
 	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
 
-// 固定幅サイト用簡易型等幅カラム生成mixin
-// _setting.scssのカラム幅を使用。デザインでmarginが決まり切ってる際に使用
+// 固定幅サイト用簡易型等幅カラム生成mixin（イメージリストも利用可）
+//_setting.scssのカラム幅を使用。デザインでmarginが決まり切ってる際に使用
 //-------------------------------------------------------------------------------------------------------
-//	$column-num: カラム数
-//	$margin-num: マージンの大きさ
-//	$column-parent-width: 親カラムの大きさ(初期値は設定値)
+//        $column-num: カラム数
+//        $margin-num: マージンの大きさ
+//        $column-parent-width: 親カラムの大きさ(初期値は設定値)
+//        $child-num:一行のイメージ数を入力。イメージリストの際に使用。
 //
-//	【使いかた】
-//	.column-layout-3 {
-//	  @include column-unit(3,20px);
-//	}
+//        【使いかた】
+//        .column-layout-3 {
+//          @include column-unit(3,20px);
+//        }
+//
+//        .list-image-01{
+//          @include column-unit(2, 10px, 2);
+//        }
 //-------------------------------------------------------------------------------------------------------
-@mixin column-unit($column-num,$margin-num,$column-parent-width:$main-column-width) {
+@mixin column-unit($column-num,$margin-num,$child-num:defaultNum,$column-parent-width:$column-width) {
 	@extend %clearfix;
 	.segment{
 		float: left;
 		margin-right: $margin-num;
 		width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
 
-		&:last-child{
-			margin-right: 0;
+		@if $child-num == defaultNum {
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+		@if $child-num != defaultNum {
+			&:nth-child(#{#{$child-num+"n"} + $child-num}){
+				margin-right: 0;
+			}
 		}
 	}
 }
