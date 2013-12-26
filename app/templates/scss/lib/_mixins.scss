@@ -124,20 +124,25 @@
 //-------------------------------------------------------------------------------------------------------
 @mixin column-unit($column-num,$margin-num,$child-num:defaultNum,$column-parent-width:$column-width) {
 	@extend %clearfix;
-	.segment{
-		float: left;
-		margin-right: $margin-num;
-		width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
+	@if $child-num == defaultNum {
+		.segment{
+			float: left;
+			margin-right: $margin-num;
+			width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
 
-		@if $child-num == defaultNum {
 			&:last-child{
-				margin-right: 0;
+					margin-right: 0;
 			}
 		}
-		@if $child-num != defaultNum {
-			&:nth-child(#{#{$child-num+"n"} + $child-num}){
-				margin-right: 0;
-			}
+	}
+	@if $child-num != defaultNum {
+		li{
+			float: left;
+			margin-right: $margin-num;
+			width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
+		}
+		&:nth-child(#{#{$child-num+"n"} + $child-num}){
+			margin-right: 0;
 		}
 	}
 }
