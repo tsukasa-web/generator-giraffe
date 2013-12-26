@@ -120,10 +120,10 @@
 //        }
 //
 //        .list-image-01{
-//          @include column-unit(2, 10px, 2, 10px);
+//          @include column-unit(2, 10px, $column-width, 2, 10px);
 //        }
 //-------------------------------------------------------------------------------------------------------
-@mixin column-unit($column-num, $margin-num, $list-num:defaultNum, $list-bottom-margin:0, $column-parent-width:$column-width) {
+@mixin column-unit($column-num, $margin-num, $column-parent-width:$column-width, $list-num:defaultNum, $list-bottom-margin:0) {
 	@extend %clearfix;
 	@if $list-num == defaultNum {
 		.segment{
