@@ -140,9 +140,10 @@
 			float: left;
 			margin-right: $margin-num;
 			width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
-		}
-		&:nth-child(#{#{$child-num+"n"} + $child-num}){
-			margin-right: 0;
+
+			&:nth-child(#{#{$child-num+"n"} + $child-num}){
+				margin-right: 0;
+			}
 		}
 	}
 }
