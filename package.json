@@ -1,6 +1,6 @@
 {
   "name": "generator-giraffe",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "A generator for Yeoman",
   "keywords": [
     "yeoman-generator"
