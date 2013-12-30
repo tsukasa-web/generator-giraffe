@@ -30,35 +30,13 @@
 //========================================================================================
 
 @function nounit($value) {
-	$_units:
-		"%",                    // percentage
-		em, ex, ch, rem,        // font
-		vw, vh, vmin, vmax,     // viewport
-		cm, mm, in, pt, pc, px, // absolute
-		deg, grad, rad, trun,   // angle
-		s, ms,                  // time
-		Hz, kHz,                // frequency
-		dpi, dpcm, dppx;        // resolution
-
-// 割る数のリスト
-	$_divisors:
-		1%,
-		1em, 1ex, 1ch, 1rem,
-		1vw, 1vh, 1vmin, 1vmax,
-		1cm, 1mm, 1in, 1pt, 1pc, 1px,
-		1deg, 1grad, 1rad, 1trun,
-		1s, 1ms,
-		1Hz, 1kHz,
-		1dpi, 1dpcm, 1dppx;
-
-// 単位取得
-	$_unit: unit($value);
-// 単位のインデックス番号を取得
-	$_index-num: index($_units, $_unit);
-// 割る数を取得
-	$_divisor: nth($_divisors, $_index-num);
-
-	@return $value / $_divisor;
+	@if (type-of($value) == number) {
+		$_divisor: ($value * 0) + 1;
+		@return $value / $_divisor;
+	} @else {
+		@warn "#{$value} is not a number.";
+		@return $value;
+	}
 }
 
 //========================================================================================
