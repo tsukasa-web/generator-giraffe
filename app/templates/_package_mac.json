@@ -25,6 +25,7 @@
 		"grunt-open": "~0.2.2",
 		"grunt-typescript": "~0.2.6",
 		"livereloadx": "~0.3.0",
-		"grunt-webfont": "~0.1.9"
+		"grunt-webfont": "~0.1.9",
+		"grunt-parallelize": "~1.0.0"
 	}
 }
