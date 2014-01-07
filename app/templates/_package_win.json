@@ -24,6 +24,7 @@
 		"grunt-este-watch": "~0.1.7",
 		"grunt-open": "~0.2.2",
 		"grunt-typescript": "~0.2.6",
-		"livereloadx": "~0.3.0"
+		"livereloadx": "~0.3.0",
+		"grunt-parallelize": "~1.0.0"
 	}
 }
