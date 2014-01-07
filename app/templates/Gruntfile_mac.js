@@ -297,9 +297,30 @@ module.exports = function(grunt) {
 					'bower.json'
 				]
 			}
-		}
+		},
 		//-----------------------------------------------------------------------
-	});
+		
+		/* タスクの並列処理
+		 ---------------------------------------------------*/
+		parallelize: {
+    			typescript: {
+      				base: 4
+			},
+  			coffee: {
+      				compile: 4,
+      				compileAll: 4,
+			},
+  			compass: {
+      				dist: 4
+			},
+  			csslint: {
+      				dist: 4
+			},
+  			jshint: {
+      				all: 4
+			},
+		}
+	);
 
 	// gruntコマンドを打つと走るタスクです。
 	grunt.registerTask('default', ['coffee:compileAll','typescript','compass','csscss','autoprefixer:no_dest','csslint','jshint','concat','uglify','cssmin']);
