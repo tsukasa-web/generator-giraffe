@@ -171,6 +171,11 @@
 		figure{
 			float: left;
 			margin-right: $margin;
+
+			figcaption{
+				display: block;
+				margin-top: 10px;
+			}
 		}
 		@if $parallel == true {
 			.text{
@@ -182,6 +187,11 @@
 		figure{
 			float: right;
 			margin-left: $margin;
+
+			figcaption{
+				display: block;
+				margin-top: 10px;
+			}
 		}
 		@if $parallel == true {
 			.text{
