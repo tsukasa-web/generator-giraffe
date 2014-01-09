@@ -101,6 +101,17 @@ GiraffeGenerator.prototype.askFor = function askFor() {
 
 
 GiraffeGenerator.prototype.app = function app() {
+	//font-awesomeを使用する際はパスを通す
+	if(this.fontawesome){
+		var indexFile = this.readFileAsString(path.join(this.sourceRoot(), 'scss/core/_setting.scss'));
+		var contentText = [
+			'//fon-awesome使用',
+			'@import "../font-awesome/font-awesome";'
+		];
+		// append the default content
+		indexFile = indexFile.push(contentText);
+	}
+
 	//下地のディレクトリ作成
 	this.mkdir(this.rootDirectory);
 	this.mkdir(this._dev);

@@ -252,6 +252,7 @@ module.exports = function(grunt) {
 					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/font-awesome/font', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.src %>/fonts' },
 					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome' },
+					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['font-awesome.scss'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/_font-awesome.scss' },
 					{ expand: true, src: 'package.json', dest: '<%= _dev %>' },
 					{ expand: true, src: 'Gruntfile.js', dest: '<%= _dev %>' },
 					{ expand: true, src: '.bowerrc', dest: '<%= _dev %>' },
@@ -272,6 +273,7 @@ module.exports = function(grunt) {
 				src: [
 					'assets',
 					'<%= _dev %>/node_modules/generator-giraffe',
+					'<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/font-awesome.scss',
 					'node_modules',
 					'bower_components',
 					'package.json',
@@ -280,28 +282,28 @@ module.exports = function(grunt) {
 					'bower.json'
 				]
 			}
-		}
+		},
 		//-----------------------------------------------------------------------
 		
 		/* タスクの並列処理
 		 ---------------------------------------------------*/
 		parallelize: {
-    			typescript: {
-      				base: 4
+    		typescript: {
+      			base: 4
 			},
   			coffee: {
-      				compile: 4,
-      				compileAll: 4,
+      			compile: 4,
+      			compileAll: 4
 			},
   			compass: {
-      				dist: 4
+      			dist: 4
 			},
   			csslint: {
-      				dist: 4
+      			dist: 4
 			},
   			jshint: {
-      				all: 4
-			},
+      			all: 4
+			}
 		}
 	});
 
