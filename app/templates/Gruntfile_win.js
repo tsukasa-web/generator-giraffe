@@ -252,12 +252,22 @@ module.exports = function(grunt) {
 					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/font-awesome/font', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.src %>/fonts' },
 					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome' },
-					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['font-awesome.scss'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/_font-awesome.scss' },
 					{ expand: true, src: 'package.json', dest: '<%= _dev %>' },
 					{ expand: true, src: 'Gruntfile.js', dest: '<%= _dev %>' },
 					{ expand: true, src: '.bowerrc', dest: '<%= _dev %>' },
 					{ expand: true, src: 'bower.json', dest: '<%= _dev %>' },
 					{ expand: true, cwd: 'node_modules', src: ['**'], dest: '<%= _dev %>/node_modules' }
+				]
+			}
+		},
+		//-----------------------------------------------------------------------
+
+		/* ファイルリネーム
+		 ---------------------------------------------------*/
+		rename: {
+			setup: {
+				files: [
+					{src: ['<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/font-awesome.scss'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/_font-awesome.scss'},
 				]
 			}
 		},
@@ -273,7 +283,6 @@ module.exports = function(grunt) {
 				src: [
 					'assets',
 					'<%= _dev %>/node_modules/generator-giraffe',
-					'<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/font-awesome.scss',
 					'node_modules',
 					'bower_components',
 					'package.json',
@@ -310,7 +319,7 @@ module.exports = function(grunt) {
 	// gruntコマンドを打つと走るタスクです。
 	grunt.registerTask('default', ['coffee:compileAll','typescript','compass','csscss','autoprefixer:no_dest','csslint','jshint','concat','uglify','cssmin']);
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
-	grunt.registerTask('start', ['copy','clean:prepare']);
+	grunt.registerTask('start', ['copy','rename','clean:prepare']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
 	grunt.registerTask('watch_files', ['open','livereloadx','esteWatch']);
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。

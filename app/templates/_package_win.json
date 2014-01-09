@@ -18,6 +18,7 @@
 		"grunt-contrib-clean": "~0.5.0",
 		"grunt-contrib-copy": "~0.4.1",
 		"grunt-contrib-csslint": "~0.2.0",
+		"grunt-contrib-rename": "~0.0.3",
 		"grunt-kss": "~0.2.4",
 		"grunt-autoprefixer": "~0.4.1",
 		"grunt-csscss": "~0.6.1",
