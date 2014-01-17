@@ -135,7 +135,7 @@
 		}
 	}
 	@if $list-num != defaultNum {
-		li{
+		figure{
 			float: left;
 			margin: 0 $margin-num $list-bottom-margin 0;
 			width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
