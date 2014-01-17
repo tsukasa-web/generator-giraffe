@@ -27,12 +27,6 @@
 	  @content;
 	}
   }
-  @if ($browserVersion == "ie8") {
-	*:first-child + html & {
-	  /* bugfix for IE7 */
-	  @content;
-	}
-  }
   @if ($browserVersion == "ie9") {
 	&:not(:target) {
 	  /* bugfix for IE9 */
