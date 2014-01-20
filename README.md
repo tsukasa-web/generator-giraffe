@@ -70,7 +70,8 @@ generator-giraffeをインストールします。
 	npm install -g generator-giraffe
 
 
-任意のディレクトリを作成して移動し、```yo giraffe & grunt start```を実行します。
+任意のディレクトリを作成して移動し、```yo giraffe & grunt start```を実行します。  
+Windowsの場合、実行前に```git config --global url."https://".insteadOf git:/```を実行します。
 
 	mkdir hogehoge
 	cd hogehoge
