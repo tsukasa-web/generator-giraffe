@@ -82,9 +82,12 @@
 	display: block;
 	width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns));
 	margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1);
-	// *width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns))-$correction;
-	// *margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1)-$correction;
-	@include clearfix();
+	//forIE7
+	@if ($supportIe7 == true) {
+		*width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns))-$correction;
+		*margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1)-$correction;
+	}
+	@extend %clearfix;
 }
 // カラムクラス
 @mixin column($x,$columns:$columns) {
@@ -92,8 +95,11 @@
 	float: left;
 	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
 	margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
-	// *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns))-$correction;
-	// *margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns))-$correction;
+	//forIE7
+	@if ($supportIe7 == true) {
+		*width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns))-$correction;
+		*margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns))-$correction;
+	}
 }
 @mixin push($offset:1) {
 	margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
@@ -523,8 +529,8 @@
 	display: inline-block;
 	@if ($supportIe7 == true) {
 		@include hack("ie7") {
-			*display: inline;
-			*zoom: 1;
+			display: inline;
+			zoom: 1;
 		}
 	}
 }
