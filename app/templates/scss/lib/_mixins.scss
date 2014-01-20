@@ -80,28 +80,28 @@
 // 包括クラス
 @mixin row($columns:$columns) {
 	display: block;
-	width: $total-width*(($gutter-width + $gridsystem-width)/$gridsystem-width);
-	margin: 0 $total-width*((($gutter-width*.5)/$gridsystem-width)*-1);
-// *width: $total-width*(($gutter-width + $gridsystem-width)/$gridsystem-width)-$correction;
-// *margin: 0 $total-width*((($gutter-width*.5)/$gridsystem-width)*-1)-$correction;
-	@extend %clearfix;
+	width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns));
+	margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1);
+	// *width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns))-$correction;
+	// *margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1)-$correction;
+	@include clearfix();
 }
 // カラムクラス
 @mixin column($x,$columns:$columns) {
 	display: inline;
 	float: left;
-	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / $gridsystem-width);
-	margin: 0 $total-width*(($gutter-width*.5)/$gridsystem-width);
-// *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / $gridsystem-width)-$correction;
-// *margin: 0 $total-width*(($gutter-width*.5)/$gridsystem-width)-$correction;
+	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
+	margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+	// *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns))-$correction;
+	// *margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns))-$correction;
 }
-
 @mixin push($offset:1) {
-	margin-left: $total-width*((($gutter-width+$column-width)*$offset) / $gridsystem-width) + $total-width*(($gutter-width*.5)/$gridsystem-width);
+	margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
 @mixin pull($offset:1) {
-	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / $gridsystem-width) + $total-width*(($gutter-width*.5)/$gridsystem-width);
+	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
 }
+
 
 // 固定幅サイト用簡易型等幅カラム生成mixin（イメージリストも利用可）
 //_setting.scssのカラム幅を使用。デザインでmarginが決まり切ってる際に使用
