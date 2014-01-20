@@ -71,7 +71,7 @@ generator-giraffeをインストールします。
 
 
 任意のディレクトリを作成して移動し、```yo giraffe & grunt start```を実行します。  
-Windowsの場合、実行前に```git config --global url."https://".insteadOf git://```を実行します。
+環境によっては実行前に```git config --global url."https://".insteadOf git://```を実行する必要があります。
 
 	mkdir hogehoge
 	cd hogehoge
