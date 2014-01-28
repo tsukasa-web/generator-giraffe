@@ -158,7 +158,6 @@
 //        $dimention: 回り込みの向き
 //        $margin: 画像横のマージン
 //        $parallel: 回り込みの有無（true or false）
-//        $caption-margin: figcaptionの上部マージン（初期値は$space-base）
 //        $breakpoint: RWD時でのフロート解除時のタイミング（初期値はfalse）
 //        $figure-margin: RWD時でのフロート解除時の画像下部マージン（初期値は$space-base）
 //
@@ -178,11 +177,11 @@
 //          @include image-wrap(right, 10px, false, $bp-tab, 10px);
 //        }
 //-------------------------------------------------------------------------------------------------------
-@mixin image-wrap($dimention, $margin, $parallel:true, $caption-margin:$space-base, $breakpoint:false, $figure-margin:$space-base) {
+@mixin image-wrap($dimention, $margin, $parallel:true, $breakpoint:false, $figure-margin:$space-base) {
 	@extend %clearfix;
 
 	@if $dimention == left {
-		figure{
+		& > figure{
 			float: left;
 			margin-right: $margin;
 
@@ -192,11 +191,6 @@
 					margin: 0 0 $figure-margin 0;
 				}
 			}
-
-			figcaption{
-				display: block;
-				margin-top: $caption-margin;
-			}
 		}
 		@if $parallel == true {
 			.text{
@@ -205,7 +199,7 @@
 		}
 	}
 	@if $dimention == right {
-		figure{
+		& > figure{
 			float: right;
 			margin-left: $margin;
 
@@ -214,11 +208,6 @@
 					float: none;
 					margin: 0 0 $figure-margin 0;
 				}
-			}
-
-			figcaption{
-				display: block;
-				margin-top: $caption-margin;
 			}
 		}
 		@if $parallel == true {
