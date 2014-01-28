@@ -265,7 +265,7 @@
 //-------------------------------------------------------------------------------------------------------
 //        【使いかた】
 //        @import "hogehoge/*.png";
-//        @include all-retina-sprites($sprite-sprites, $dimensions: true);
+//        @include all-retina-sprites($sprite-sprites, true);
 //-------------------------------------------------------------------------------------------------------
 @mixin all-retina-sprites($map, $dimensions: false){
 	$base-class: sprite-map-name($map);
