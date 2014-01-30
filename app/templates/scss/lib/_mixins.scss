@@ -226,10 +226,10 @@
 //
 //        【使いかた】
 //        div {
-//                @include below($breakMedium) {
+//                @include below($bp-tab) {
 //                        margin-bottom: 0;
 //                }
-//                @include inbetween($breakSmall, $breakMedium) {
+//                @include inbetween($bp-sp, $bp-tab) {
 //                        margin-bottom: 40px;
 //                }
 //        }
