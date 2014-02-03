@@ -283,36 +283,18 @@
 // アイコン生成
 //-------------------------------------------------------------------------------------------------------
 //        $pos:     ビュレット表示位置（left, right）
-//        $space:   親要素外辺からのビュレット位置（px）
+//        $space-side:   親要素外辺からの縦のビュレット位置（px）
+//        $space-top:   親要素外辺からの横のビュレット位置（px）
 //        $includeName: 生成されたスプライトクラスを記述してアイコンを指定
 //-------------------------------------------------------------------------------------------------------
-@mixin addIcon ($pos, $space, $includeName) {
+@mixin addIcon ($pos, $space-side, $space-top, $includeName) {
 	position: relative;
 	&:before {
 		content: "";
 		position: absolute;
-		top: 0;
-		#{$pos}: $space;
+		top: $space-top;
+		#{$pos}: $space-side;
 		z-index: 1;
-		display: block;
-		overflow: hidden;
-		@extend #{"."+$includeName};
-	}
-}
-
-// ビュレット生成
-//-------------------------------------------------------------------------------------------------------
-//        $top:     親要素上外辺からのビュレット位置（px）
-//        $left:    親要素左外辺からのビュレット位置（px）
-//        $includeName: 生成されたスプライトクラスを記述してアイコンを指定
-//-------------------------------------------------------------------------------------------------------
-@mixin addBullet ($top, $left, $includeName) {
-	position: relative;
-	&:before {
-		content: "";
-		position: absolute;
-		top: $top;
-		left: $left;
 		display: block;
 		overflow: hidden;
 		@extend #{"."+$includeName};
