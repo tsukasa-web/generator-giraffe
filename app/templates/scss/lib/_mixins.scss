@@ -181,7 +181,7 @@
 	@extend %clearfix;
 
 	@if $dimention == left {
-		& > figure{
+		& > figure,& > .img{
 			float: left;
 			margin-right: $margin;
 
@@ -199,7 +199,7 @@
 		}
 	}
 	@if $dimention == right {
-		& > figure{
+		& > figure,& > .img{
 			float: right;
 			margin-left: $margin;
 
