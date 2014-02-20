@@ -220,7 +220,7 @@ module.exports = function(grunt) {
 				return ['typescript:base:src:' + filepath,'concat:run','uglify'];
 			},
 			scss: function(filepath) {
-				return ['compass','csscss','autoprefixer:no_dest','concat:style','cssmin'];
+				return ['compass','autoprefixer:no_dest','concat:style','cssmin'];
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -318,11 +318,13 @@ module.exports = function(grunt) {
 
 	// gruntコマンドを打つと走るタスクです。
 	grunt.registerTask('default', ['coffee:compileAll','typescript','compass','csscss','autoprefixer:no_dest','csslint','jshint','concat','uglify','cssmin']);
+	// grunt cssコマンドを打つと走るタスクです。csscssによってスタイルの重複を出力します。
+	grunt.registerTask('csscss', ['csscss']);
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['copy','rename','clean:prepare']);
-	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
+	// grunt watch_filesコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
 	grunt.registerTask('watch_files', ['open','livereloadx','esteWatch']);
-	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
+	// grunt imageminコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
 	// grunt lintコマンドを打つと走るタスクです。css/jsをチェックします。
 	grunt.registerTask('lint', ['csslint','jshint']);
