@@ -2,6 +2,7 @@
 //-------------------------------------//
 //  Sprite Classes
 //-------------------------------------//
+//trueにするとRetina対応になる。アイコン画像のサイズが奇数にならないように注意
 $sprite-sprite-dimensions: true;
 @import "sprite/*.png";
 @include all-sprite-sprites;

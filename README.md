@@ -170,6 +170,10 @@ cmd_batまたはcmd_commandフォルダの中にあるgrunt_style-guideを叩く
 
 - [grunt-kss](https://github.com/t32k/grunt-kss)
 
+#### 重複プロパティのチェック
+
+cmd_batまたはcmd_commandフォルダの中にあるgrunt_csscssを叩くと重複プロパティのチェックが始まります。初期設定では/common/css/dest内にチェックの指定先が設定されています。
+
 #### webfontの作成（Macのみ）
 
 cmd_batまたはcmd_commandフォルダの中にあるgrunt_webfontを叩くとwebfontの作成が始まります。初期設定では/common/fonts/iconsフォルダにaiファイルを格納してください。
