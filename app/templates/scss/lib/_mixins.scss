@@ -551,3 +551,18 @@
 	max-width: 100%;
 	height: auto;
 }
+
+//cssAnimation用mixin
+@mixin css-animation-base($breakpoint){
+	@if $breakpoint{
+		@include above($breakpoint){
+			-webkit-backface-visibility:hidden;
+			backface-visibility:hidden;
+			transform: translateZ(0);
+		}
+	}@else{
+		-webkit-backface-visibility:hidden;
+		backface-visibility:hidden;
+		transform: translateZ(0);
+	}
+}
