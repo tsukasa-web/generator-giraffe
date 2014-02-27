@@ -553,7 +553,7 @@
 }
 
 //cssAnimation用mixin
-@mixin css-animation-base($breakpoint){
+@mixin css-animation-base($breakpoint: false){
 	@if $breakpoint{
 		@include above($breakpoint){
 			-webkit-backface-visibility:hidden;
