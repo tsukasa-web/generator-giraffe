@@ -21,11 +21,3 @@
 		}
 	}
 }
-
-//cssアニメーション対応用ベースextend
-//-------------------------------------------------------------------------------
-%css-animation-base{
-	-webkit-backface-visibility:hidden;
-	backface-visibility:hidden;
-	transform: translateZ(0);
-}
