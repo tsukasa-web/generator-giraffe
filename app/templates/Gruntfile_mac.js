@@ -284,7 +284,7 @@ module.exports = function(grunt) {
 		rename: {
 			setup: {
 				files: [
-					{src: ['<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/font-awesome.scss'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/_font-awesome.scss'},
+					{src: ['<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/font-awesome.scss'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome/_font-awesome.scss'}
 				]
 			}
 		},
