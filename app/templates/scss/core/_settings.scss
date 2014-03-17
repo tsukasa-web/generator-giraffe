@@ -67,6 +67,8 @@ $font-size-2: $font-size-base - 2px;
 $font-size-3: $font-size-base + 2px;
 $font-size-4: $font-size-base + 4px;
 $font-size-5: $font-size-base + 6px;
+// Font Size(rem)
+//$font-size-base: 62.5%;
 
 // Border Radius
 $radius-base: 3px;
@@ -86,3 +88,11 @@ $font-family-body: "メイリオ","Helvetica Neue", Helvetica, Arial, sans-serif
 @import "../lib/library";
 //font-awesome使用時にコメントを外す
 //@import "../font-awesome/font-awesome";
+
+// Font Size(rem)
+//%font-size-0{@include rem(11);}
+//%font-size-1{@include rem(12);}
+//%font-size-2{@include rem(13);}
+//%font-size-3{@include rem(14);}
+//%font-size-3{@include rem(16);}
+//%font-size-3{@include rem(28);}
