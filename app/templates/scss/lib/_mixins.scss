@@ -130,7 +130,7 @@
 @mixin column-unit($column-num, $margin-num, $column-parent-width:$column-width, $list-num:defaultNum, $list-bottom-margin:0) {
 	@extend %clearfix;
 	@if $list-num == defaultNum {
-		.segment{
+		& > .segment{
 			float: left;
 			margin-right: $margin-num;
 			width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
@@ -141,7 +141,7 @@
 		}
 	}
 	@if $list-num != defaultNum {
-		figure{
+		& > .img-list{
 			float: left;
 			margin: 0 $margin-num $list-bottom-margin 0;
 			width: ($column-parent-width - ($margin-num * ($column-num - 1))) / $column-num;
@@ -181,7 +181,7 @@
 	@extend %clearfix;
 
 	@if $dimention == left {
-		& > figure,& > .img{
+		& > .img{
 			float: left;
 			margin-right: $margin;
 
@@ -199,7 +199,7 @@
 		}
 	}
 	@if $dimention == right {
-		& > figure,& > .img{
+		& > .img{
 			float: right;
 			margin-left: $margin;
 
