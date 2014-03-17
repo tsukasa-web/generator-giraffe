@@ -2,10 +2,12 @@
 //-------------------------------------//
 //  User's Base Style
 //-------------------------------------//
-
-body {
+html{
 	font-size: $font-size-base;
 	font-family: $font-family-body;
+}
+
+body {
 	-webkit-text-size-adjust: 100%;
 }
 
