@@ -14,30 +14,12 @@ $supportIe7: false;
 $supportIe8: true;
 $supportIe9: true;
 
-// SemanticGridSystemSetting(使わない時は丸ごと消してOK)
-//-------------------------------------
-// Defaults which you can freely override
-$column-width: 60px;
-$gutter-width: 20px;
-$columns: 12;
-// Utility function — you should never need to modify this
-@function gridsystem-width($columns:$columns) {
-	@return ($column-width * $columns) + ($gutter-width * $columns);
-}
-// fluid layout時は100%に設定する
-$total-width: gridsystem-width($columns);
-// Correcting percentage-to-pixel rounding errors in IE6 & 7
-// See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
-// Override @min with the minimum width of your layout
-$min-width:960;
-$correction:(((0.5 / $min-width) * 100) * 1%);
-
 //  Variables
 //-------------------------------------
 
 // FixedWidth
-$site-width: 940px;
-$main-column-width: 700px;
+$site-width: 960px;
+$main-column-width: 620px;
 
 // BreakPoint
 $bp-pc: 1024px;
@@ -67,7 +49,7 @@ $font-size-2: $font-size-base - 2px;
 $font-size-3: $font-size-base + 2px;
 $font-size-4: $font-size-base + 4px;
 $font-size-5: $font-size-base + 6px;
-// Font Size(rem)
+// Font Size Base(rem)
 //$font-size-base: 62.5%;
 
 // Border Radius
@@ -83,6 +65,25 @@ $base-line-height: round($base-line-height * 10) / 10; // 小数点第二位で�
 // Font Settings
 $font-family-body: "メイリオ","Helvetica Neue", Helvetica, Arial, sans-serif;
 
+// SemanticGridSystemSetting(使わない時は丸ごと消してOK)
+//-------------------------------------
+
+// Defaults which you can freely override
+$column-width: 60px;
+$gutter-width: 20px;
+$columns: 12;
+// Utility function — you should never need to modify this
+@function gridsystem-width($columns:$columns) {
+	@return ($column-width * $columns) + ($gutter-width * $columns);
+}
+// fluid layout時は100%に設定する
+$total-width: gridsystem-width($columns);
+// Correcting percentage-to-pixel rounding errors in IE6 & 7
+// See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+// Override @min with the minimum width of your layout
+$min-width: $site-width;
+$correction:(((0.5 / $min-width) * 100) * 1%);
+
 //  Mixins & Extends
 //-------------------------------------
 @import "../lib/library";
@@ -90,6 +91,7 @@ $font-family-body: "メイリオ","Helvetica Neue", Helvetica, Arial, sans-serif
 //@import "../font-awesome/font-awesome";
 
 // Font Size(rem)
+//-------------------------------------
 //%font-size-0{@include rem(11);}
 //%font-size-1{@include rem(12);}
 //%font-size-2{@include rem(13);}
