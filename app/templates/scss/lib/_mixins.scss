@@ -17,7 +17,7 @@
 @mixin rem($size, $context: 10px) {
 	$size: nounit($size);
 	$context: nounit($context);
-	font-size: fz($size, $context);
+	font-size: fz($size, $context, px);
 	font-size: ($size / 10) + rem;
 }
 
