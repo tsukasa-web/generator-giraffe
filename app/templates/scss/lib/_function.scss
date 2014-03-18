@@ -57,7 +57,9 @@
 	$context : nounit($context);
 	@if $unit == '%' {
 		@return percentage($size/$context);
-	} @else {
+	} @else if $unit == 'px' {
+		@return #{($size/$context)*10}#{$unit};
+	}@else {
 		@return #{$size/$context}#{$unit};
 	}
 }
