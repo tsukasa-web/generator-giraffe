@@ -69,10 +69,21 @@ module.exports = function(grunt) {
 					basePath: '<%%= path.root %>/',
 					sassDir: '<%%= path.compile %>/scss',
 					cssDir: '<%%= path.src %>/css/dest',
-					//compassのimgディレクトリ（スプライトを書き出すディレクトリ
-					imagesDir : '<%%= path.src %>/img',
 					config: 'config.rb'
 				}
+			}
+		},
+		//-----------------------------------------------------------------------
+
+		/* SpriteSheetの作成
+		 ------------------------------------------------------------------------*/
+		sprite: {
+			all:{
+				src: '<%%= path.root %>/<%%= path.src %>/img/sprite/*.png',
+				destCSS: '<%%= path.root %>/<%%= path.compile %>/scss/lib/_sprite.scss',
+				destImg: '<%%= path.root %>/<%%= path.src %>/img/sprite.png',
+				padding: 2,
+				algorithm: 'binary-tree'
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -269,6 +280,7 @@ module.exports = function(grunt) {
 					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/font-awesome/fonts', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.src %>/fonts' },
 					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome' },
+					{ expand: true, cwd: 'bower_components/bourbon/app/assets/stylesheets', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/burbon' },
 					{ expand: true, src: 'package.json', dest: '<%= _dev %>' },
 					{ expand: true, src: 'Gruntfile.js', dest: '<%= _dev %>' },
 					{ expand: true, src: '.bowerrc', dest: '<%= _dev %>' },
@@ -324,11 +336,8 @@ module.exports = function(grunt) {
   			compass: {
       			dist: 4
 			},
-  			csslint: {
-      			dist: 4
-			},
-  			jshint: {
-      			all: 4
+			sprite: {
+				all: 4
 			}
 		}
 	});
@@ -337,6 +346,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['coffee:compileAll','typescript','compass','csscss','autoprefixer:no_dest','csslint','jshint','concat','uglify','cssmin']);
 	// grunt cssコマンドを打つと走るタスクです。csscssによってスタイルの重複を出力します。
 	grunt.registerTask('csscss', ['csscss']);
+	// grunt spriteコマンドを打つと走るタスクです。csscssによってスタイルの重複を出力します。
+	grunt.registerTask('sprite', ['sprite:all']);
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['copy','rename','clean:prepare']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
@@ -345,6 +356,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('imagemin', ['imagemin']);
 	// grunt lintコマンドを打つと走るタスクです。css/jsをチェックします。
 	grunt.registerTask('lint', ['csslint','jshint']);
+	// grunt checkコマンドを打つと走るタスクです。css/jsをチェックします。
+	grunt.registerTask('check', ['csscss','csslint','jshint']);
 	// grunt webfontコマンドを打つと走るタスクです。webfontを作成します。
 	grunt.registerTask('webfont', ['webfont']);
 	// grunt styleコマンドを打つと走るタスクです。styleguideを作成します。

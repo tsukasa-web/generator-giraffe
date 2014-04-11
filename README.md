@@ -21,11 +21,9 @@ A generator for [Yeoman](http://yeoman.io).
 * este-watchによるファイル更新の監視→コンパイル・結合・圧縮・デバッグの自動化
 * 自動ブラウザリロード
 * jQueryの取得（バージョン指定可）
-* 最新normalize.cssの取得
-* 最新modernizr.jsの取得
-* 最新font-awesomeの取得
+* 最新normalize/modernizr/font-awesome/burbonの取得
 * 画像圧縮
-* config.rb連動によるスプライト画像のランダム文字列消去
+* spritesmithによるsprite作成
 * grunt-kssによるスタイルガイド生成
 * Macパッケージのみwebfont作成機能の追加
 * 各種mixinなどのscssライブラリを追加
@@ -170,9 +168,13 @@ cmd_batまたはcmd_commandフォルダの中にあるgrunt_style-guideを叩く
 
 - [grunt-kss](https://github.com/t32k/grunt-kss)
 
-#### 重複プロパティのチェック
+#### 重複プロパティのチェックとcss・jsのlint/hintチェック
 
-cmd_batまたはcmd_commandフォルダの中にあるgrunt_csscssを叩くと重複プロパティのチェックが始まります。初期設定では/common/css/dest内にチェックの指定先が設定されています。
+cmd_batまたはcmd_commandフォルダの中にあるgrunt_checkを叩くと重複プロパティのチェックとcss/jsのlint/hintが始まります。初期設定では/common/css/destと/common/js/dest内にチェックの指定先が設定されています。
+
+#### スプライトシートの作成
+
+Compassで毎回書き出すと遅くなるので、Compassのスプライトシート生成はgrunt-spritesmithで代用しています。cmd_batまたはcmd_commandフォルダの中にあるgrunt_spriteを叩くとスプライトシートの生成が始まります。初期設定では/common/img/sprite内のpng画像が結合され、/common/img/にsprite.pngとして書き出されます。また、スタイルの設定ファイルは/common/compile/scss/lib/_sprite.scssに上書きされます。
 
 #### webfontの作成（Macのみ）
 

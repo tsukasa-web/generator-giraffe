@@ -3,11 +3,6 @@
 //  Settings
 //-------------------------------------//
 
-//Compass
-@import "compass";
-// SVG指定も出力するように(IE9用)
-$experimental-support-for-svg: true;
-
 //  Browser
 //-------------------------------------
 $supportIe7: false;
@@ -89,12 +84,3 @@ $correction:(((0.5 / $min-width) * 100) * 1%);
 @import "../lib/library";
 //font-awesome使用時にコメントを外す
 //@import "../font-awesome/font-awesome";
-
-// Font Size(rem)
-//-------------------------------------
-//%font-size-0{@include rem(11);}
-//%font-size-1{@include rem(12);}
-//%font-size-2{@include rem(13);}
-//%font-size-3{@include rem(14);}
-//%font-size-3{@include rem(16);}
-//%font-size-3{@include rem(28);}
