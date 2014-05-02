@@ -51,12 +51,6 @@ GiraffeGenerator.prototype.askFor = function askFor() {
 			default: 'Y/n'
 		},
 		{
-			type: 'confirm',
-			name: 'sprite',
-			message: 'Do you use sprite sheet? default(Yes)',
-			default: 'Y/n'
-		},
-		{
 			name: 'jqueryversion default(latest)',
 			message: 'jQuery version?'
 		},
@@ -136,9 +130,6 @@ GiraffeGenerator.prototype.app = function app() {
 	this.template('scss/lib/_hack.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/lib' + '/_hack.scss');
 	this.template('scss/lib/_library.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/lib' + '/_library.scss');
 	this.template('scss/lib/_mixins.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/lib' + '/_mixins.scss');
-	if(this.sprite){
-		this.template('scss/lib/_sprite.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/lib' + '/_sprite.scss');
-	}
 	this.template('scss/_core.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/_core.scss');
 	this.template('scss/_module.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/_module.scss');
 	this.template('scss/style.scss', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/style.scss');
