@@ -21,6 +21,7 @@
 		"grunt-contrib-rename": "~0.0.3",
 		"grunt-kss": "~0.2.6",
 		"grunt-autoprefixer": "~0.7.2",
+		"grunt-spritesmith": "~1.26.0",
 		"grunt-csscss": "~0.6.1",
 		"grunt-este-watch": "~0.1.15",
 		"grunt-open": "~0.2.3",

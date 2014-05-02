@@ -280,7 +280,7 @@ module.exports = function(grunt) {
 					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/font-awesome/fonts', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.src %>/fonts' },
 					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome' },
-					{ expand: true, cwd: 'bower_components/bourbon/app/assets/stylesheets', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/burbon' },
+					{ expand: true, cwd: 'bower_components/bourbon/dist', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/burbon' },
 					{ expand: true, src: 'package.json', dest: '<%= _dev %>' },
 					{ expand: true, src: 'Gruntfile.js', dest: '<%= _dev %>' },
 					{ expand: true, src: '.bowerrc', dest: '<%= _dev %>' },
