@@ -21,11 +21,10 @@ A generator for [Yeoman](http://yeoman.io).
 * este-watchによるファイル更新の監視→コンパイル・結合・圧縮・デバッグの自動化
 * 自動ブラウザリロード
 * jQueryの取得（バージョン指定可）
-* 最新normalize/modernizr/font-awesome/burbonの取得
-* 画像圧縮
+* mixinライブラリ（bourbon）を搭載
+* 最新normalize/modernizr/font-awesomeの取得
 * spritesmithによるsprite作成
 * grunt-kssによるスタイルガイド生成
-* Macパッケージのみwebfont作成機能の追加
 * 各種mixinなどのscssライブラリを追加
 
 ### Install
@@ -44,21 +43,6 @@ Windows環境では[Rubyのインストール](https://www.ruby-lang.org/ja/down
 ```
 $ npm install -g yo grunt-cli bower livereloadx
 $ gem install csscss
-```
-
-MacOSの場合はさらにgrunt-webfontを使用するために
-
-- [Homebrew](http://brew.sh/index_ja.html)
-- [fontforge](http://fontforge.org/ja/)
-
-のインストールが必要です。  
-
-```
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-```
-
-```
-$ brew install fontforge ttfautohint
 ```
 
 ### How to use
@@ -140,28 +124,6 @@ https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkigh
 ファイル監視を行っている最中に行ってください。  
 後はhtmlまたはcss(sassの人はscss)を編集して保存した際にブラウザがリロードされればok。
 
-#### 仕上げの時に画像圧縮を行う
-
-cmd_batまたはcmd_commandフォルダの中にあるgrunt_imagemin.batまたはgrunt_imagemin.commandを叩くと画像圧縮が始まります。  
-現状第3階層までのフォルダの中の画像を圧縮しますが、さらに階層を掘り下げたい時は
-
-    imagemin: {
-        dist: {
-            options: {
-                    optimizationLevel: 3
-                },
-            files: [{
-                expand: true,
-                src: [
-                    '<%= path.root %>/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/**/*.{png, jpg, jpeg}'
-                ]
-            }]
-        }
-    },
-
-上記の記述のsrcの中を追記していただけると追加することができます。  
-optimizationLevelを変更することで圧縮レベルを変更できます。（0～7）
-
 #### styleguideの作成
 
 cmd_batまたはcmd_commandフォルダの中にあるgrunt_style-guideを叩くとstyleguideの作成が始まります。初期設定ではtemplate格納先はstyleguide_tempフォルダに、出力先はmodulesフォルダ内に設定されています。
@@ -175,24 +137,6 @@ cmd_batまたはcmd_commandフォルダの中にあるgrunt_checkを叩くと重
 #### スプライトシートの作成
 
 Compassで毎回書き出すと遅くなるので、Compassのスプライトシート生成はgrunt-spritesmithで代用しています。cmd_batまたはcmd_commandフォルダの中にあるgrunt_spriteを叩くとスプライトシートの生成が始まります。初期設定では/common/img/sprite内のpng画像が結合され、/common/img/にsprite.pngとして書き出されます。また、スタイルの設定ファイルは/common/compile/scss/lib/_sprite.scssに上書きされます。
-
-#### webfontの作成（Macのみ）
-
-cmd_batまたはcmd_commandフォルダの中にあるgrunt_webfontを叩くとwebfontの作成が始まります。初期設定では/common/fonts/iconsフォルダにaiファイルを格納してください。
-
-    webfont: {
-    			icons: {
-    				src: '<%= path.root %>/<%= path.src %>/fonts/icons/*.svg',
-    				dest: '<%= path.root %>/<%= path.src %>/fonts',
-    				destCss: '<%= path.root %>/<%= path.compile %>',
-    				options: {
-    					font: 'custom-fonts',
-    					stylesheet:'scss',
-    					htmlDemo: false,
-    					relativeFontPath: '/<%= path.src %>/fonts'
-    				}
-    			}
-    		},
 
 ## License
 

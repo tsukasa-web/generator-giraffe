@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 				src: ['<%%= path.root %>/<%%= path.compile %>/ts/*.ts'],
 				dest: '<%%= path.root %>/<%%= path.src %>/js/dest',
 				options: {
-					base_path: '<%%= path.root %>/<%%= path.compile %>/ts'
+					base_path: '<%%= path.root %>/<%%= path.compile %>'
 				}
 			}
 		},
@@ -63,13 +63,13 @@ module.exports = function(grunt) {
 
 		/* Scssのコンパイル
 		 ------------------------------------------------------------------------*/
-		compass: {
+		sass: {
+			options: {
+				includePaths: require('node-bourbon').includePaths
+			},
 			dist: {
-				options: {
-					basePath: '<%%= path.root %>/',
-					sassDir: '<%%= path.compile %>/scss',
-					cssDir: '<%%= path.src %>/css/dest',
-					config: 'config.rb'
+				files: {
+					'<%= path.root %>/<%= path.src %>/css/dest/style.css':'<%= path.root %>/<%= path.compile %>/scss/style.scss'
 				}
 			}
 		},
@@ -94,14 +94,14 @@ module.exports = function(grunt) {
 			style: {
 				src: [
 					'<%%= path.root %>/<%%= path.src %>/lib/normalize.css',
-					'<%%= path.root %>/<%%= path.src %>/css/dest/hogehoge.css'
+					'<%%= path.root %>/<%%= path.src %>/css/dest/style.css'
 				],
 				dest: '<%%= path.root %>/<%%= path.src %>/css/style-all.css'
 			},
 			run: {
 				src: [
 					'<%%= path.root %>/<%%= path.src %>/lib/jquery.min.js',
-					'<%%= path.root %>/<%%= path.src %>/js/dest/hogehoge.js'
+					'<%%= path.root %>/<%%= path.src %>/js/dest/run.js'
 				],
 				dest: '<%%= path.root %>/<%%= path.src %>/js/run-all.js'
 			}
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
 		},
 		//-----------------------------------------------------------------------
 
-		/* jsHintによるjsチェック。結果はコンソールに表示
+		/* jsHintによるjsデバッグ。結果はコンソールに表示
 		 ------------------------------------------------------------------------*/
 		jshint: {
 			// 対象ファイルを指定
@@ -192,40 +192,6 @@ module.exports = function(grunt) {
 		},
 		//-----------------------------------------------------------------------
 
-		/* 画像最適化
-		 ---------------------------------------------------*/
-		imagemin: {
-			dist: {
-				options: {
-					optimizationLevel: 3
-				},
-				files: [{
-					expand: true,
-					src: [
-						'<%%= path.root %>/**/*.{png, jpg, jpeg}','<%%= path.root %>/**/**/*.{png, jpg, jpeg}','<%%= path.root %>/**/**/**/*.{png, jpg, jpeg}'
-					]
-				}]
-			}
-		},
-		//-----------------------------------------------------------------------
-
-		/* webfont作成
-		 ------------------------------------------------------------------------*/
-		webfont: {
-			icons: {
-				src: '<%%= path.root %>/<%%= path.src %>/fonts/icons/*.svg',
-				dest: '<%%= path.root %>/<%%= path.src %>/fonts',
-				destCss: '<%%= path.root %>/<%%= path.compile %>/scss/libs',
-				options: {
-					font: 'custom-fonts',
-					stylesheet:'scss',
-					htmlDemo: false,
-					relativeFontPath: '/<%%= path.src %>/fonts'
-				}
-			}
-		},
-		//-----------------------------------------------------------------------
-
 		/* 変更保存の監視。指定階層のファイルの更新時にタスクを行う
 		 ------------------------------------------------------------------------*/
 		esteWatch: {
@@ -241,14 +207,14 @@ module.exports = function(grunt) {
 			},
 			coffee: function(filepath) {
 				grunt.config(["coffee", "compile", "src"], filepath);
-				return ['coffee:compile:src:' + filepath,'jshint','concat:run','uglify'];
+				return ['coffee:compile:src:' + filepath,'concat:run','uglify'];
 			},
 			ts: function(filepath) {
 				grunt.config(["typescript", "base", "src"], filepath);
-				return ['typescript:base:src:' + filepath,'jshint','concat:run','uglify'];
+				return ['typescript:base:src:' + filepath,'concat:run','uglify'];
 			},
 			scss: function(filepath) {
-				return ['compass','autoprefixer:no_dest','concat:style','cssmin'];
+				return ['sass','autoprefixer:no_dest','concat:style','cssmin'];
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -278,9 +244,8 @@ module.exports = function(grunt) {
 					{ expand: true, cwd: 'bower_components/jquery', src: ['jquery.min.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/modernizr', src: ['modernizr.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
-					{ expand: true, cwd: 'bower_components/font-awesome/fonts', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.src %>/fonts' },
+					{ expand: true, cwd: 'bower_components/font-awesome/font', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.src %>/fonts' },
 					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome' },
-					{ expand: true, cwd: 'bower_components/bourbon/dist', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/bourbon' },
 					{ expand: true, src: 'package.json', dest: '<%= _dev %>' },
 					{ expand: true, src: 'Gruntfile.js', dest: '<%= _dev %>' },
 					{ expand: true, src: '.bowerrc', dest: '<%= _dev %>' },
@@ -343,23 +308,19 @@ module.exports = function(grunt) {
 	});
 
 	// gruntコマンドを打つと走るタスクです。
-	grunt.registerTask('default', ['coffee:compileAll','typescript','compass','csscss','autoprefixer:no_dest','csslint','jshint','concat','uglify','cssmin']);
+	grunt.registerTask('default', ['coffee:compileAll','typescript','sass','csscss','autoprefixer:no_dest','csslint','jshint','concat','uglify','cssmin']);
 	// grunt cssコマンドを打つと走るタスクです。csscssによってスタイルの重複を出力します。
 	grunt.registerTask('csscss', ['csscss']);
 	// grunt spriteコマンドを打つと走るタスクです。csscssによってスタイルの重複を出力します。
 	grunt.registerTask('sprite', ['sprite:all']);
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['copy','rename','clean:prepare']);
-	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
+	// grunt watch_filesコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
 	grunt.registerTask('watch_files', ['open','livereloadx','esteWatch']);
-	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
-	grunt.registerTask('imagemin', ['imagemin']);
-	// grunt lintコマンドを打つと走るタスクです。css/jsをチェックします。
+	// grunt lintコマンドを打つと走るタスクです。css/jsにlint/hintを走らせます。
 	grunt.registerTask('lint', ['csslint','jshint']);
 	// grunt checkコマンドを打つと走るタスクです。css/jsをチェックします。
 	grunt.registerTask('check', ['csscss','csslint','jshint']);
-	// grunt webfontコマンドを打つと走るタスクです。webfontを作成します。
-	grunt.registerTask('webfont', ['webfont']);
 	// grunt styleコマンドを打つと走るタスクです。styleguideを作成します。
 	grunt.registerTask('style', ['kss']);
 

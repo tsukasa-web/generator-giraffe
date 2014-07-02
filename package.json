@@ -1,21 +1,21 @@
 {
   "name": "generator-giraffe",
-  "version": "1.1.14",
+  "version": "1.2.1",
   "description": "A generator for Yeoman",
   "keywords": [
     "yeoman-generator"
   ],
-  "homepage": "https://github.com/tsukasa-oneslocus/generator-giraffe",
-  "bugs": "https://github.com/tsukasa-oneslocus/generator-giraffe/issues",
+  "homepage": "https://github.com/tsukasa-web/generator-giraffe",
+  "bugs": "https://github.com/tsukasa-web/generator-giraffe/issues",
   "author": {
     "name": "",
     "email": "",
-    "url": "https://github.com/tsukasa-oneslocus"
+    "url": "https://github.com/tsukasa-web"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/tsukasa-oneslocus/generator-giraffe.git"
+    "url": "git://github.com/tsukasa-web/generator-giraffe.git"
   },
   "scripts": {
     "test": "mocha"
@@ -30,8 +30,8 @@
     "yo": ">=1.0.0-rc.1"
   },
   "engines": {
-    "node": ">=0.8.0",
-    "npm": ">=1.2.10"
+    "node": ">=0.10.29",
+    "npm": ">=1.4.14"
   },
   "licenses": [
     {

@@ -140,16 +140,8 @@ GiraffeGenerator.prototype.app = function app() {
 	}else{
 		this.directory('cmd/cmd_bat', this._dev + '/cmd_bat');
 	}
-	if(this.OS){
-		this.template('_package_mac.json','package.json');
-	}else{
-		this.template('_package_win.json','package.json');
-	}
-	if(this.OS){
-		this.template('Gruntfile_mac.js','Gruntfile.js');
-	}else{
-		this.template('Gruntfile_win.js','Gruntfile.js');
-	}
+	this.template('_package.json','package.json');
+	this.template('_Gruntfile.js','Gruntfile.js');
 	this.template('_bower.json','bower.json');
 	this.template('bowerrc','.bowerrc');
 	this.template('index.html', this.rootDirectory + '/index.html');

@@ -4,7 +4,6 @@
 		"jquery": "<%= jqueryversion ? '~' + jqueryversion : 'latest' %>",
 		<% if (fontawesome) { %> "font-awesome": "latest",<% } %>
 		"modernizr": "latest",
-		"normalize-css": "latest",
-		"bourbon": "latest"
+		"normalize-css": "latest"
 	}
 }
