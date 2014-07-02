@@ -1,6 +1,6 @@
 # generator-giraffe
 
-![](http://ones-locus-plus.sakura.ne.jp/giraffe.jpg)
+![](http://ones-locus-plus.sakura.ne.jp/giraffe2.jpg)
 
 A generator for [Yeoman](http://yeoman.io).  
 高速化を念頭に置いて作成した静的サイト構築用ジェネレータです。
