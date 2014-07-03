@@ -186,7 +186,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'<%%= path.root %>/<%%= path.documents %>/modules': ['<%%= path.root %>/<%%= path.compile %>/scss']
+					'<%%= path.root %>/<%%= path.documents %>/modules': ['<%%= path.root %>/<%%= path.documents %>/styleguide_temp/css']
 				}
 			}
 		},
