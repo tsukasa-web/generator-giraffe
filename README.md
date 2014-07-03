@@ -132,7 +132,29 @@ cmd_batまたはcmd_commandフォルダの中にあるgrunt_style-guideを叩く
 
 #### 重複プロパティのチェックとcss・jsのlint/hintチェック
 
-cmd_batまたはcmd_commandフォルダの中にあるgrunt_checkを叩くと重複プロパティのチェックとcss/jsのlint/hintが始まります。初期設定では/common/css/destと/common/js/dest内にチェックの指定先が設定されています。
+cmd_batまたはcmd_commandフォルダの中にあるgrunt_checkを叩くと重複プロパティのチェックとcss/jsのlint/hintが始まります。初期設定では/common/css/destと/common/js/dest内にチェックの指定先が設定されています。lintの設定等はGruntfile.jsを書き換えて設定可能です。
+
+- [grunt-contrib-csslint](https://github.com/gruntjs/grunt-contrib-csslint)
+- [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
+- [grunt-csscss](https://github.com/peterkeating/grunt-csscss)
+
+#### 不要プレフィックスのチェック
+
+不要なプレフィックスを削除するためにautoprefixerを使用しています。ブラウザのバージョン指定はGruntfile.jsの下記部分になります。こちらのバージョンは変更可能です。下記リンクを参考にしてください。
+
+	/* cssファイルの不要prefix消去
+	 ------------------------------------------------------------------------*/
+	autoprefixer: {
+		options: {
+			// ブラウザのバージョン指定
+			browsers: ['last 2 version', 'ie 8']
+		},
+		no_dest: {
+			src: '<%= path.root %>/<%= path.src %>/css/dest/*.css'
+		}
+	},
+
+- [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
 
 #### スプライトシートの作成
 
