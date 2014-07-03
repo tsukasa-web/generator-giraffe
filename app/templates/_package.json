@@ -11,8 +11,8 @@
 		"grunt-contrib-uglify": "~0.4.0",
 		"grunt-contrib-concat": "~0.4.0",
 		"grunt-contrib-cssmin": "~0.9.0",
-		"grunt-contrib-jshint": "~0.10.0",
-		"grunt-contrib-coffee": "~0.10.1",
+		"grunt-contrib-jshint": "~0.10.0",<% if (coffee) {%>
+		"grunt-contrib-coffee": "~0.10.1",<% } %>
 		"grunt-contrib-clean": "~0.5.0",
 		"grunt-contrib-copy": "~0.5.0",
 		"grunt-contrib-csslint": "~0.2.0",
@@ -22,8 +22,8 @@
 		"grunt-spritesmith": "~1.26.0",
 		"grunt-csscss": "~0.6.1",
 		"grunt-este-watch": "~0.1.15",
-		"grunt-open": "~0.2.3",
-		"grunt-typescript": "~0.3.0",
+		"grunt-open": "~0.2.3",<% if (type) {%>
+		"grunt-typescript": "~0.3.0",<% } %>
 		"grunt-sass": "~0.14.0",
 		"livereloadx": "~0.3.2",
 		"node-bourbon": "~1.2.3",

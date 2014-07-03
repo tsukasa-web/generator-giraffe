@@ -69,7 +69,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'<%= path.root %>/<%= path.src %>/css/dest/style.css':'<%= path.root %>/<%= path.compile %>/scss/style.scss'
+					'<%%= path.root %>/<%%= path.src %>/css/dest/style.css':'<%%= path.root %>/<%%= path.compile %>/scss/style.scss'
 				}
 			}
 		},
@@ -241,10 +241,10 @@ module.exports = function(grunt) {
 		copy: {
 			setup: {
 				files: [
-					{ expand: true, cwd: 'bower_components/jquery', src: ['jquery.min.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
+					{ expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/modernizr', src: ['modernizr.js'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
 					{ expand: true, cwd: 'bower_components/normalize-css', src: ['normalize.css'], dest: '<%= rootDirectory %>/<%%= path.src %>/lib' },
-					{ expand: true, cwd: 'bower_components/font-awesome/font', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.src %>/fonts' },
+					{ expand: true, cwd: 'bower_components/font-awesome/fonts', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.src %>/fonts' },
 					{ expand: true, cwd: 'bower_components/font-awesome/scss', src: ['**'], dest: '<%= rootDirectory %>/<%%= path.compile %>/scss/font-awesome' },
 					{ expand: true, src: 'package.json', dest: '<%= _dev %>' },
 					{ expand: true, src: 'Gruntfile.js', dest: '<%= _dev %>' },
@@ -282,6 +282,8 @@ module.exports = function(grunt) {
 					'package.json',
 					'Gruntfile.js',
 					'.bowerrc',
+					'.editorconfig',
+					'.jshintrc',
 					'bower.json'
 				]
 			}

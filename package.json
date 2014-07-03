@@ -1,41 +1,38 @@
 {
-  "name": "generator-giraffe",
-  "version": "1.2.1",
-  "description": "A generator for Yeoman",
-  "keywords": [
-    "yeoman-generator"
-  ],
-  "homepage": "https://github.com/tsukasa-web/generator-giraffe",
-  "bugs": "https://github.com/tsukasa-web/generator-giraffe/issues",
-  "author": {
-    "name": "",
-    "email": "",
-    "url": "https://github.com/tsukasa-web"
-  },
-  "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/tsukasa-web/generator-giraffe.git"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "dependencies": {
-    "yeoman-generator": "~0.13.0"
-  },
-  "devDependencies": {
-    "mocha": "~1.12.0"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0-rc.1"
-  },
-  "engines": {
-    "node": ">=0.10.29",
-    "npm": ">=1.4.14"
-  },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+	"name": "generator-giraffe",
+	"version": "1.2.16",
+	"description": "A generator for html5 website",
+	"licenses": "MIT",
+	"homepage": "https://github.com/tsukasa-web/generator-giraffe",
+	"bugs": "https://github.com/tsukasa-web/generator-giraffe/issues",
+	"main": "app/index.js",
+	"repository": "git://github.com/tsukasa-web/generator-giraffe",
+	"author": {
+		"name": "tsukasa-web",
+		"email": "oneslocus@gmail.com",
+		"url": "https://github.com/tsukasa-web"
+	},
+	"engines": {
+		"node": ">=0.10.0"
+	},
+	"scripts": {
+		"test": "mocha"
+	},
+	"files": [
+		"app"
+	],
+	"keywords": [
+		"yeoman-generator"
+	],
+	"dependencies": {
+		"yeoman-generator": "~0.16.0",
+		"chalk": "~0.4.0",
+		"yosay": "^0.1.0"
+	},
+	"devDependencies": {
+		"mocha": "*"
+	},
+	"peerDependencies": {
+		"yo": ">=1.0.0"
+	}
 }
