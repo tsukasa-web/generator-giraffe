@@ -133,8 +133,8 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		}
 		this.mkdir(this.rootDirectory + '/' + this._documents);
 		this.mkdir(this.rootDirectory + '/' + this._documents + '/modules');
-		this.mkdir(this.rootDirectory + '/' + this._documents + '/styleguide_temp');
 
+		this.copy('styleguide_temp', this.rootDirectory + '/' + this._documents);
 		this.directory('scss/core', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/core');
 		this.directory('scss/modules', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/modules');
 		this.directory('scss/lib', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/lib');
