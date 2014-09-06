@@ -26,6 +26,7 @@ A generator for [Yeoman](http://yeoman.io).
 * spritesmithによるsprite作成
 * grunt-kssによるスタイルガイド生成
 * 各種mixinなどのscssライブラリを追加
+* Jadeに対応
 
 ### Install
 
@@ -65,6 +66,10 @@ yeomanからの質問形式で以下の設定を行います。
 - localhost（プロジェクト名）
 - ルートディレクトリ名
 - OS選択（YesでMac,NoでWin）
+- TypeScriptを使用するかどうか
+- CoffeeScriptを使用するかどうか
+- Jadeを使用するかどうか
+- FontAwesomeを使用するかどうか
 - jQueryのバージョン（無記入で最新版）
 - 共通リソースディレクトリ名
 - コンパイル言語ファイルの格納先
