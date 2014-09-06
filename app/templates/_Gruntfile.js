@@ -88,6 +88,36 @@ module.exports = function(grunt) {
 		},
 		//-----------------------------------------------------------------------
 
+		/* Jadeのコンパイル
+		 ------------------------------------------------------------------------*/
+		jade: {
+			compile:{
+				options:{
+					debug: true,
+					pretty: true,
+					data: function(dest, src) {
+						// --- Gruntfile内でオブジェクトを定義してtemplateに渡す時
+						//return {
+						//	from: src,
+						//	to: dest
+						//};
+
+						// --- 外部ファイルからオブジェクトをtemplateに渡す時
+						// return require('./locals.json');
+					}
+
+				},
+				files:{
+					expand: true,
+					cwd: '<%%= path.root %>/<%%= path.compile %>/jade',
+					src:['**/*.jade','!parts/*.jade'],
+					dest: '<%%= path.root %>',
+					ext: '.html'
+				}
+			}
+		},
+		//-----------------------------------------------------------------------
+
 		/* js,cssファイルの結合
 		 ------------------------------------------------------------------------*/
 		concat: {
@@ -181,12 +211,12 @@ module.exports = function(grunt) {
 		kss: {
 			options: {
 				includeType: 'css',
-				includePath: '<%%= path.root %>/<%%= path.src %>/css/style-all.min.css',
-				template: '<%%= path.root %>/<%%= path.documents %>/styleguide_temp'
+				includePath: '<%= path.root %>/<%= path.src %>/css/style-all.min.css',
+				template: '<%= path.root %>/<%= path.documents %>/styleguide_temp'
 			},
 			dist: {
 				files: {
-					'<%%= path.root %>/<%%= path.documents %>/modules': ['<%%= path.root %>/<%%= path.documents %>/styleguide_temp/css']
+					'<%= path.root %>/<%= path.documents %>/modules': ['<%= path.root %>/<%= path.compile %>/scss/']
 				}
 			}
 		},

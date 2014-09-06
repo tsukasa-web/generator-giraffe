@@ -94,14 +94,17 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			var ksscontent = $('#kss-content');
 			var sidebarAdjust = function() {
 				// Match footer/body height
-				var height = Math.max($(window).height(), $('#kss-main').height());
+				var height = ksscontent.height();
+				var padding = parseInt(ksscontent.css('padding-top'), 10);
+				var maxheight = Math.max(height+padding, $(window).height());
 
 				if ($(window).width() <= 768) {
 					$('#kss-main, #kss-nav').height('auto');
 				} else {
-					$('#kss-main, #kss-nav').height(height);
+					$('#kss-main, #kss-nav').height(maxheight);
 				}
 			};
 
@@ -115,6 +118,7 @@
 
 		});
 	</script>
+
 
 	{{! This won't be included in the demo page }}
 	{{#if argv.xdemo}}

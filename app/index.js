@@ -59,6 +59,12 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 			},
 			{
 				type: 'confirm',
+				name: 'jade',
+				message: 'Do you use Jade? default(Yes)',
+				default: 'Y/n'
+			},
+			{
+				type: 'confirm',
 				name: 'fontawesome',
 				message: 'Do you use font-awesome? default(Yes)',
 				default: 'Y/n'
@@ -97,6 +103,7 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 			this.fontawesome = props.fontawesome;
 			this.coffee = props.coffee;
 			this.type = props.type;
+			this.jade = props.jade;
 			this.sprite = props.sprite;
 			this.jqueryversion = props.jqueryversion;
 			this.common = props.common;
@@ -130,6 +137,10 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		}
 		if(this.type){
 			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/ts');
+		}
+		if(this.type){
+			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade');
+			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade' + '/parts');
 		}
 		this.mkdir(this.rootDirectory + '/' + this._documents);
 		this.mkdir(this.rootDirectory + '/' + this._documents + '/modules');
