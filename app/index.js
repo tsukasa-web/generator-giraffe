@@ -140,7 +140,7 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		}
 		if(this.type){
 			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade');
-			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade' + '/parts');
+			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade' + '/_parts');
 		}
 		this.mkdir(this.rootDirectory + '/' + this._documents);
 		this.mkdir(this.rootDirectory + '/' + this._documents + '/modules');

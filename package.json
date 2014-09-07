@@ -1,6 +1,6 @@
 {
 	"name": "generator-giraffe",
-	"version": "1.3.0",
+	"version": "1.3.3",
 	"description": "A generator for html5 website",
 	"licenses": "MIT",
 	"homepage": "https://github.com/tsukasa-web/generator-giraffe",

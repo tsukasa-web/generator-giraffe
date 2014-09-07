@@ -110,7 +110,7 @@ module.exports = function(grunt) {
 				files:{
 					expand: true,
 					cwd: '<%%= path.root %>/<%%= path.compile %>/jade',
-					src:['**/*.jade','!parts/*.jade'],
+					src:['**/*.jade','!_parts/*.jade'],
 					dest: '<%%= path.root %>',
 					ext: '.html'
 				}
@@ -227,9 +227,10 @@ module.exports = function(grunt) {
 		esteWatch: {
 			options: {
 				dirs: [
-					'<%%= path.root %>/<%%= path.compile %>/scss/*',
-					'<%%= path.root %>/<%%= path.compile %>/coffee/',
-					'<%%= path.root %>/<%%= path.compile %>/ts/'
+					'<%%= path.root %>/<%%= path.compile %>/scss/**/*.scss',
+					'<%%= path.root %>/<%%= path.compile %>/coffee/**/*.coffee',
+					'<%%= path.root %>/<%%= path.compile %>/ts/**/*.ts',
+					'<%%= path.root %>/<%%= path.compile %>/jade/**/*.jade'
 				],
 				livereload: {
 					enabled: false
@@ -245,6 +246,9 @@ module.exports = function(grunt) {
 			},
 			scss: function(filepath) {
 				return ['sass','autoprefixer:no_dest','concat:style','cssmin'];
+			},
+			jade: function(filepath) {
+				return ['jade'];
 			}
 		},
 		//-----------------------------------------------------------------------
