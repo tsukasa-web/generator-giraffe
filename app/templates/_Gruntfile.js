@@ -107,13 +107,13 @@ module.exports = function(grunt) {
 					}
 
 				},
-				files:{
+				files:[{
 					expand: true,
-					cwd: '<%%= path.root %>/<%%= path.compile %>/jade',
+					cwd: '<%= path.root %>/<%= path.compile %>/jade',
 					src:['**/*.jade','!_parts/*.jade'],
-					dest: '<%%= path.root %>',
+					dest: '<%= path.root %>',
 					ext: '.html'
-				}
+				}]
 			}
 		},
 		//-----------------------------------------------------------------------
