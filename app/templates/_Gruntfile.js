@@ -109,9 +109,9 @@ module.exports = function(grunt) {
 				},
 				files:[{
 					expand: true,
-					cwd: '<%= path.root %>/<%= path.compile %>/jade',
+					cwd: '<%%= path.root %>/<%%= path.compile %>/jade',
 					src:['**/*.jade','!_parts/*.jade'],
-					dest: '<%= path.root %>',
+					dest: '<%%= path.root %>',
 					ext: '.html'
 				}]
 			}
@@ -211,12 +211,12 @@ module.exports = function(grunt) {
 		kss: {
 			options: {
 				includeType: 'css',
-				includePath: '<%= path.root %>/<%= path.src %>/css/style-all.min.css',
-				template: '<%= path.root %>/<%= path.documents %>/styleguide_temp'
+				includePath: '<%%= path.root %>/<%%= path.src %>/css/style-all.min.css',
+				template: '<%%= path.root %>/<%%= path.documents %>/styleguide_temp'
 			},
 			dist: {
 				files: {
-					'<%= path.root %>/<%= path.documents %>/modules': ['<%= path.root %>/<%= path.compile %>/scss/']
+					'<%%= path.root %>/<%%= path.documents %>/modules': ['<%%= path.root %>/<%%= path.compile %>/scss/']
 				}
 			}
 		},
@@ -318,6 +318,7 @@ module.exports = function(grunt) {
 					'.bowerrc',
 					'.editorconfig',
 					'.jshintrc',
+					'.yo-rc.json',
 					'bower.json'
 				]
 			}

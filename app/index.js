@@ -1,7 +1,7 @@
 'use strict';
 
 var util = require('util');
-var path = require("path");
+var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
@@ -123,7 +123,7 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		this.mkdir(this.rootDirectory + '/' + this.common + '/css' + '/dest');
 		this.mkdir(this.rootDirectory + '/' + this.common + '/js' + '/dest');
 		this.mkdir(this.rootDirectory + '/' + this.common + '/img');
-		this.mkdir(this.rootDirectory + '/' + this.common + '/img + /sprite');
+		this.mkdir(this.rootDirectory + '/' + this.common + '/img' + '/sprite');
 		this.mkdir(this.rootDirectory + '/' + this.common + '/include');
 		this.mkdir(this.rootDirectory + '/' + this.common + '/lib');
 		if(this.fontawesome){
@@ -138,14 +138,16 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		if(this.type){
 			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/ts');
 		}
-		if(this.type){
+		if(this.jade){
 			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade');
 			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade' + '/_parts');
 		}
 		this.mkdir(this.rootDirectory + '/' + this._documents);
 		this.mkdir(this.rootDirectory + '/' + this._documents + '/modules');
+		this.mkdir(this.rootDirectory + '/' + this._documents + '/styleguide_temp');
+		this.copy('styleguide_temp/index.html', this.rootDirectory + '/' + this._documents + '/styleguide_temp' + '/index.html');
+		this.directory('styleguide_temp/public', this.rootDirectory + '/' + this._documents + '/styleguide_temp' + '/public');
 
-		this.copy('styleguide_temp', this.rootDirectory + '/' + this._documents);
 		this.directory('scss/core', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/core');
 		this.directory('scss/modules', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/modules');
 		this.directory('scss/lib', this.rootDirectory + '/' + this.common + '/' + this.compile + '/scss' + '/lib');
@@ -158,11 +160,11 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		}else{
 			this.directory('cmd/cmd_bat', this._dev + '/cmd_bat');
 		}
-		this.template('_package.json','package.json');
+		this.copy('index.html', this.rootDirectory + '/index.html');
 		this.template('_Gruntfile.js','Gruntfile.js');
+		this.template('_package.json','package.json');
 		this.template('_bower.json','bower.json');
 		this.template('bowerrc','.bowerrc');
-		this.copy('index.html', this.rootDirectory + '/index.html');
 		this.copy('config.rb', this._dev + '/config.rb');
 	},
 
