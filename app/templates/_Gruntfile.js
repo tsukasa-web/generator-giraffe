@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 				src: ['<%%= path.root %>/<%%= path.compile %>/ts/*.ts'],
 				dest: '<%%= path.root %>/<%%= path.src %>/js/dest',
 				options: {
-					base_path: '<%%= path.root %>/<%%= path.compile %>'
+					basePath: '<%%= path.root %>/<%%= path.compile %>/ts'
 				}
 			}
 		},
@@ -109,7 +109,7 @@ module.exports = function(grunt) {
 				},
 				files:[{
 					expand: true,
-					cwd: '<%%= path.root %>/<%%= path.compile %>/jade',
+					cwd: '<%%= path.root %>/<%%= path.compile %>/jade/',
 					src:['**/*.jade','!_parts/*.jade'],
 					dest: '<%%= path.root %>',
 					ext: '.html'
