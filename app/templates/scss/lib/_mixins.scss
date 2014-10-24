@@ -355,10 +355,8 @@
 @mixin  inline_block {
 	display: inline-block;
 	@if ($supportIe7 == true) {
-		@include hack("ie7") {
-			display: inline;
-			zoom: 1;
-		}
+		display: inline;
+		zoom: 1;
 	}
 }
 
@@ -369,16 +367,12 @@
 @mixin opacity($opacity) {
 	opacity: $opacity;
 	@if ($supportIe8 == true) {
-		@include hack("ie8") {
-			$opacity-ie: $opacity * 100;
-			filter: alpha(opacity=$opacity-ie);
-		}
+		$opacity-ie: $opacity * 100;
+		filter: alpha(opacity=$opacity-ie);
 	}
 	@if ($supportIe7 == true) {
-		@include hack("ie7") {
-			$opacity-ie: $opacity * 100;
-			filter: alpha( opacity=50 );
-		}
+		$opacity-ie: $opacity * 100;
+		filter: alpha( opacity=50 );
 	}
 }
 

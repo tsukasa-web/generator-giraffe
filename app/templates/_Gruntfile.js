@@ -83,7 +83,8 @@ module.exports = function(grunt) {
 				destCSS: '<%%= path.root %>/<%%= path.compile %>/scss/lib/_sprite.scss',
 				destImg: '<%%= path.root %>/<%%= path.src %>/img/sprite.png',
 				padding: 2,
-				algorithm: 'binary-tree'
+				algorithm: 'binary-tree',
+				imgPath: '/<%= path.src %>/img/sprite.png'
 			}
 		},
 		//-----------------------------------------------------------------------
