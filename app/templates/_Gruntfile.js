@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 				destImg: '<%%= path.root %>/<%%= path.src %>/img/sprite.png',
 				padding: 2,
 				algorithm: 'binary-tree',
-				imgPath: '/<%= path.src %>/img/sprite.png'
+				imgPath: '/<%%= path.src %>/img/sprite.png'
 			}
 		},
 		//-----------------------------------------------------------------------
