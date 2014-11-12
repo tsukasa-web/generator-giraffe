@@ -167,7 +167,7 @@ module.exports = function(grunt) {
 		autoprefixer: {
 			options: {
 				// ブラウザのバージョン指定
-				browsers: ['last 2 version', 'ie 8']
+				browsers: ['last 2 version', 'ie 9']
 			},
 			no_dest: {
 				src: '<%%= path.root %>/<%%= path.src %>/css/dest/*.css'
@@ -325,7 +325,7 @@ module.exports = function(grunt) {
 			}
 		},
 		//-----------------------------------------------------------------------
-		
+
 		/* タスクの並列処理
 		 ---------------------------------------------------*/
 		parallelize: {
