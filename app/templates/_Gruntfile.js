@@ -362,14 +362,6 @@ module.exports = function(grunt) {
 	// grunt styleコマンドを打つと走るタスクです。styleguideを作成します。
 	grunt.registerTask('style', ['kss']);
 
-	// loadNpmTasksを変更（プラグイン読み込み）
-	var taskName;
-	for(taskName in pkg.devDependencies) {
-		if(taskName.substring(0, 6) == 'grunt-') {
-			grunt.loadNpmTasks(taskName);
-		}
-	}
-
-	// loadNpmTasksを変更（手動）
-	grunt.loadNpmTasks('livereloadx');
+    // jit-gruntを使用したプラグイン読み込み）
+    require('jit-grunt')(grunt);
 };
