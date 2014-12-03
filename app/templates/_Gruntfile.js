@@ -228,22 +228,20 @@ module.exports = function(grunt) {
 		esteWatch: {
 			options: {
 				dirs: [
-					'<%%= path.root %>/<%%= path.compile %>/scss/**/*.scss',
-					'<%%= path.root %>/<%%= path.compile %>/coffee/**/*.coffee',
-					'<%%= path.root %>/<%%= path.compile %>/ts/**/*.ts',
-					'<%%= path.root %>/<%%= path.compile %>/jade/**/*.jade'
+					'<%%= path.root %>/<%%= path.compile %>/scss/**/',
+					'<%%= path.root %>/<%%= path.compile %>/coffee/**/',
+					'<%%= path.root %>/<%%= path.compile %>/ts/**/',
+					'<%%= path.root %>/<%%= path.compile %>/jade/**/'
 				],
 				livereload: {
 					enabled: false
 				}
 			},
 			coffee: function(filepath) {
-				grunt.config(["coffee", "compile", "src"], filepath);
-				return ['coffee:compile:src:' + filepath,'concat:run','uglify'];
+				return ['newer:coffee','concat:run','uglify'];
 			},
 			ts: function(filepath) {
-				grunt.config(["typescript", "base", "src"], filepath);
-				return ['typescript:base:src:' + filepath,'concat:run','uglify'];
+				return ['newer:typescript','concat:run','uglify'];
 			},
 			scss: function(filepath) {
 				return ['sass','autoprefixer:no_dest','concat:style','cssmin'];
