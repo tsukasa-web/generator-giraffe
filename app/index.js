@@ -59,12 +59,6 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 			},
 			{
 				type: 'confirm',
-				name: 'jade',
-				message: 'Do you use Jade? default(Yes)',
-				default: 'Y/n'
-			},
-			{
-				type: 'confirm',
 				name: 'fontawesome',
 				message: 'Do you use font-awesome? default(Yes)',
 				default: 'Y/n'
@@ -103,7 +97,6 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 			this.fontawesome = props.fontawesome;
 			this.coffee = props.coffee;
 			this.type = props.type;
-			this.jade = props.jade;
 			this.sprite = props.sprite;
 			this.jqueryversion = props.jqueryversion;
 			this.common = props.common;
@@ -138,10 +131,9 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		if(this.type){
 			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/ts');
 		}
-		if(this.jade){
-			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade');
-			this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade' + '/_parts');
-		}
+		this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade');
+		this.mkdir(this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade' + '/_parts');
+        this.copy('jade/index.jade', this.rootDirectory + '/' + this.common + '/' + this.compile + '/jade' + '/index.jade');
 		this.mkdir(this.rootDirectory + '/' + this._documents);
 		this.mkdir(this.rootDirectory + '/' + this._documents + '/modules');
 		this.mkdir(this.rootDirectory + '/' + this._documents + '/styleguide_temp');
@@ -160,12 +152,10 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		}else{
 			this.directory('cmd/cmd_bat', this._dev + '/cmd_bat');
 		}
-		this.copy('index.html', this.rootDirectory + '/index.html');
 		this.template('_Gruntfile.js','Gruntfile.js');
 		this.template('_package.json','package.json');
 		this.template('_bower.json','bower.json');
 		this.template('bowerrc','.bowerrc');
-		this.copy('config.rb', this._dev + '/config.rb');
 	},
 
 	projectfiles: function () {
