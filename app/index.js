@@ -117,7 +117,6 @@ var GiraffeGenerator = yeoman.generators.Base.extend({
 		this.mkdir(this.rootDirectory + '/' + this.common + '/js' + '/dest');
 		this.mkdir(this.rootDirectory + '/' + this.common + '/img');
 		this.mkdir(this.rootDirectory + '/' + this.common + '/img' + '/sprite');
-		this.mkdir(this.rootDirectory + '/' + this.common + '/include');
 		this.mkdir(this.rootDirectory + '/' + this.common + '/lib');
 		if(this.fontawesome){
 			this.mkdir(this.rootDirectory + '/' + this.common + '/fonts');
