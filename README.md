@@ -5,6 +5,8 @@
 A generator for [Yeoman](http://yeoman.io).  
 高速化を念頭に置いて作成した静的サイト構築用ジェネレータです。
 
+**※2015.05.18以降の更新は[generator-lancelot](https://github.com/tsukasa-web/generator-lancelot)で行われています。**
+
 ## About giraffe
 
 ### 機能
